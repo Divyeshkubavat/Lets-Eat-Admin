@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <item android:id="@+id/Admin_Delivery"
+        android:title="Delivery"
+        android:icon="@drawable/baseline_directions_bike_24"/>
     <item android:id="@+id/Admin_Order"
-        android:title="Home"
+        android:title="ORDER"
         android:icon="@drawable/baseline_pending_actions_24"/>
     <item android:id="@+id/Admin_Home"
-        android:title="Cart"
+        android:title="HOME"
         android:icon="@drawable/baseline_home_24"/>
+    <item android:id="@+id/Admin_Staff"
+        android:title="Staff"
+        android:icon="@drawable/baseline_supervisor_account_24"/>
     <item android:id="@+id/Admin_Profile"
         android:title="Profile"
-        android:icon="@drawable/baseline_shopping_cart_24"/>
+        android:icon="@drawable/baseline_person_24"/>
+
 </menu>

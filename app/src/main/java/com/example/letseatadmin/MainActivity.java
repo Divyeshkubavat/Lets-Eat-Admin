@@ -2,10 +2,12 @@ package com.example.letseatadmin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -40,20 +42,45 @@ public class MainActivity extends AppCompatActivity {
                 {
                     case  R.id.Admin_Home:
                         fragment = new AdminHome();
-                        Toast.makeText(MainActivity.this, item.getItemId(), Toast.LENGTH_SHORT).show();
                         break;
                     case  R.id.Admin_Order:
                         fragment = new AdminOrder();
-                        Toast.makeText(MainActivity.this, item.getItemId(), Toast.LENGTH_SHORT).show();
-
                         break;
                     case  R.id.Admin_Profile:
                         fragment = new AdminProfile();
-                        Toast.makeText(MainActivity.this, item.getItemId(), Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.Admin_Staff:
+                        fragment = new AdminStaff();
+                        break;
+                    case R.id.Admin_Delivery:
+                        fragment=new AdminDelivery();
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.container2,fragment).commit();
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setMessage("Do you want to Exit 🥺🥺🥺 ?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user pressed "yes", then he is allowed to exit from application
+                finishAffinity();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
