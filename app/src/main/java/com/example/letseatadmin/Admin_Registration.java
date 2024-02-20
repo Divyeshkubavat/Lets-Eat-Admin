@@ -209,7 +209,6 @@ public class Admin_Registration extends AppCompatActivity {
                 sb.append(AlphaNumericString
                         .charAt(index));
             }
-
             return sb.toString();
     }
     public String Admin_Email_Format() {

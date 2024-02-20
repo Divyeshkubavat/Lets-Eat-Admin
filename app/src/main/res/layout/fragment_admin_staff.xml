@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app"
     tools:context=".AdminStaff">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Employees"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:id="@+id/Admin_Staff_Heading"
+                android:textSize="@dimen/_30sdp"
+                android:layout_margin="@dimen/_10sdp">
+            </TextView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/Admin_Staff_Recyclerview">
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/baseline_add_24"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/button"
+        android:layout_marginBottom="@dimen/_80sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:id="@+id/Admin_Staff_ADD_FloatButton"/>
 
-</FrameLayout>
+</RelativeLayout>

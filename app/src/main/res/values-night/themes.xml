@@ -13,10 +13,23 @@
         <item name="android:statusBarColor">@color/app</item>
         <!-- Customize your theme here. -->
         <item name="android:itemTextAppearance">@style/ChangeTextColor</item>
+        <item name="floatingActionButtonStyle">@style/FloatingActionButtonStyle</item>
     </style>
 
 
     <style name="ChangeTextColor" parent="android:style/TextAppearance.Widget.IconMenu.Item">
         <item name="android:textColor">@color/button</item>
+    </style>
+
+    <style name="FloatingActionButtonStyle" parent="Widget.Design.FloatingActionButton">
+        <item name="shapeAppearanceOverlay">@style/FabShapeStyle</item>
+    </style>
+
+    <style name="FabShapeStyle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+            <item name="cornerSize">20%</item>
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerFamilyTopLeft">cut</item>
+        <item name="cornerFamilyTopRight">cut</item>
     </style>
 </resources>

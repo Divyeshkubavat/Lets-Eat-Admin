@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Admin_Staff_Design">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_20sdp"
+        android:elevation="@dimen/_5sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/Admin_Staff_Image"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:elevation="@dimen/_14sdp"
+                android:src="@drawable/a"
+                app:civ_border_color="@color/app"
+                app:civ_border_overlay="false"
+                app:civ_border_width="@dimen/_1sdp" />
+
+            <TextView
+                android:id="@+id/Admin_Staff_Name"
+                android:layout_width="@dimen/_160sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_96sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Kubavat Divyesh S."
+                android:textColor="@color/app"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Admin_Staff_Name"
+                android:layout_marginStart="@dimen/_96sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="Mo:-"
+                android:textColor="@color/app"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Admin_Staff_Mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Admin_Staff_Name"
+                android:layout_marginStart="@dimen/_128sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="7096011908"
+                android:textColor="@color/app"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Admin_Staff_Email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Admin_Staff_Mobile"
+                android:layout_marginStart="@dimen/_96sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="dkubavat0@gmail.com"
+                android:textColor="@color/app"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/Admin_Staff_Delete"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/_24sdp"
+                android:src="@drawable/baseline_delete_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Admin_Staff_Email"
+                android:layout_marginStart="@dimen/_96sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="Salary:-"
+                android:textColor="@color/app"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Admin_Staff_Salary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Admin_Staff_Email"
+                android:layout_marginStart="@dimen/_148sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="30000 RS"
+                android:textColor="@color/app"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

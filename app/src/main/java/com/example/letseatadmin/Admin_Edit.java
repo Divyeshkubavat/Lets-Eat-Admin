@@ -22,6 +22,7 @@ public class Admin_Edit extends AppCompatActivity {
         Admin_Edit_DOB=findViewById(R.id.Admin_Edit_DOB);
         Admin_Edit_Mobile=findViewById(R.id.Admin_Edit_Mobile);
         Admin_Edit_Udate_Button=findViewById(R.id.Admin_Edit_Update_Button);
+        Admin_Edit_Id.setFocusable(false);
         Admin_Edit_Udate_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

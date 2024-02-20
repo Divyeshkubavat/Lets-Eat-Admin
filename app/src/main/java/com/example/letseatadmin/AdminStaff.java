@@ -1,5 +1,6 @@
 package com.example.letseatadmin;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,13 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AdminStaff#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class AdminStaff extends Fragment {
-
+    FloatingActionButton Admin_Staff_Add_FloatButton;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,15 +30,6 @@ public class AdminStaff extends Fragment {
     public AdminStaff() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AdminStaff.
-     */
     // TODO: Rename and change types and number of parameters
     public static AdminStaff newInstance(String param1, String param2) {
         AdminStaff fragment = new AdminStaff();
@@ -59,6 +53,14 @@ public class AdminStaff extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin_staff, container, false);
+        View view = inflater.inflate(R.layout.fragment_admin_staff, container, false);
+        Admin_Staff_Add_FloatButton = view.findViewById(R.id.Admin_Staff_ADD_FloatButton);
+        Admin_Staff_Add_FloatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), Admin_Staff_Add.class));
+            }
+        });
+    return view;
     }
 }
