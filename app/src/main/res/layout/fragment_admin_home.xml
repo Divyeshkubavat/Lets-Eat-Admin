@@ -3,25 +3,277 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/app"
     tools:context=".AdminHome">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="HOME"
-        android:textColor="@color/white"/>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/baseline_add_24"
-        android:layout_alignParentEnd="true"
-        android:backgroundTint="@color/button"
-        android:layout_marginBottom="@dimen/_80sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:id="@+id/Admin_Home_ADD_FloatButton"/>
+        android:background="#F8F5F5"
+        android:id="@+id/sw1">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_50sdp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/_136sdp"
+                    android:layout_height="@dimen/_136sdp"
+                    android:layout_margin="@dimen/_24sdp"
+                    android:layout_marginTop="@dimen/_56sdp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="@dimen/_320sdp"
+                        android:background="@drawable/accout_background"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/circles"
+                            tools:layout_editor_absoluteX="-16dp"
+                            tools:layout_editor_absoluteY="-66dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="Good Morning"
+                            android:id="@+id/Admin_Home_Greeting"
+                            android:textColor="@color/button"
+                            android:textSize="@dimen/_20sdp"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.497"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/imageView"
+                            app:layout_constraintVertical_bias="0.656" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/Admin_Home_Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:visibility="visible"
+                        android:text="Hi ! Divyesh Kubavat"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_18sdp"
+                        app:layout_constraintEnd_toEndOf="@+id/Admin_Home_Image"
+                        app:layout_constraintStart_toStartOf="@+id/Admin_Home_Image"
+                        app:layout_constraintTop_toBottomOf="@+id/Admin_Home_Image" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/Admin_Home_Image"
+                        android:layout_width="@dimen/_110sdp"
+                        android:layout_height="@dimen/_110sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:src="@drawable/avatar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_19sdp"
+                        android:layout_marginTop="72dp"
+                        android:layout_marginEnd="@dimen/_19sdp"
+                        android:background="@drawable/user_background"
+                        android:orientation="vertical"
+                        android:visibility="visible"
+                        android:layout_marginBottom="@dimen/_50sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Admin_Home_Name">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_10sdp"
+                            android:gravity="center_horizontal">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="@dimen/_20sdp"
+                                android:background="@color/app"
+                                android:backgroundTint="@color/app">
+                                <FrameLayout
+                                    android:layout_width="@dimen/_110sdp"
+                                    android:layout_height="@dimen/_110sdp"
+                                    android:layout_gravity="fill_vertical"
+                                    android:layout_marginBottom="@dimen/_5sdp"
+                                    >
+
+                                    <ImageButton
+                                        android:id="@+id/Admin_Home_Burger"
+                                        android:layout_width="@dimen/_110sdp"
+                                        android:layout_height="@dimen/_100sdp"
+                                        android:src="@drawable/burger"
+                                        android:background="@color/app"
+                                        android:scaleType="fitXY">
+                                    </ImageButton>
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Burger"
+                                        android:clickable="false"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/button"
+                                        android:layout_marginTop="@dimen/_95sdp"
+                                        android:layout_gravity="center_horizontal"/>
+                                </FrameLayout>
+                            </androidx.cardview.widget.CardView>
+                            <View
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_1sdp"/>
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="@dimen/_20sdp"
+                                android:background="@color/app"
+                                android:backgroundTint="@color/app">
+                                <FrameLayout
+                                    android:layout_width="@dimen/_110sdp"
+                                    android:layout_height="@dimen/_110sdp"
+                                    android:layout_gravity="fill_vertical"
+                                    android:layout_marginBottom="@dimen/_5sdp">
+
+                                    <ImageButton
+                                        android:id="@+id/Admin_Home_Pizza"
+                                        android:layout_width="@dimen/_110sdp"
+                                        android:layout_height="@dimen/_100sdp"
+                                        android:src="@drawable/pizza"
+                                        android:background="@color/app"
+                                        android:scaleType="fitXY">
+                                    </ImageButton>
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Pizza"
+                                        android:clickable="false"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/button"
+                                        android:layout_marginTop="@dimen/_95sdp"
+                                        android:layout_gravity="center_horizontal"/>
+                                </FrameLayout>
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_10sdp"
+                            android:gravity="center_horizontal">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="@dimen/_20sdp"
+                                android:background="@color/app"
+                                android:backgroundTint="@color/app">
+                                <FrameLayout
+                                    android:layout_width="@dimen/_110sdp"
+                                    android:layout_height="@dimen/_110sdp"
+                                    android:layout_gravity="fill_vertical"
+                                    android:layout_marginBottom="@dimen/_5sdp"
+                                    >
+
+                                    <ImageButton
+                                        android:id="@+id/Admin_Home_Combo"
+                                        android:layout_width="@dimen/_110sdp"
+                                        android:layout_height="@dimen/_100sdp"
+                                        android:src="@drawable/combo"
+                                        android:background="@color/app"
+                                        android:scaleType="fitXY">
+                                    </ImageButton>
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Combo"
+                                        android:clickable="false"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/button"
+                                        android:layout_marginTop="@dimen/_95sdp"
+                                        android:layout_gravity="center_horizontal"/>
+                                </FrameLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <View
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_1sdp"/>
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="@dimen/_20sdp"
+                                android:background="@color/app"
+                                android:backgroundTint="@color/app">
+                                <FrameLayout
+                                    android:layout_width="@dimen/_110sdp"
+                                    android:layout_height="@dimen/_110sdp"
+                                    android:layout_gravity="fill_vertical"
+                                    android:layout_marginBottom="@dimen/_5sdp">
+
+                                    <ImageButton
+                                        android:id="@+id/Admin_Home_Drink"
+                                        android:layout_width="@dimen/_110sdp"
+                                        android:layout_height="@dimen/_100sdp"
+                                        android:src="@drawable/drink"
+                                        android:background="@color/app"
+                                        android:scaleType="fitXY">
+                                    </ImageButton>
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Drink"
+                                        android:clickable="false"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/button"
+                                        android:layout_marginTop="@dimen/_95sdp"
+                                        android:layout_gravity="center_horizontal"/>
+                                </FrameLayout>
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+                        <Button
+                            android:id="@+id/Admin_Home_Offers"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_20sdp"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:background="@drawable/admin_home_button_2"
+                            android:text="SALE OFFERS"
+                            android:textColor="@color/button"
+                            android:layout_marginBottom="@dimen/_20sdp"
+                            />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

@@ -26,7 +26,7 @@ public class AdminSplashScreen extends AppCompatActivity {
         Admin_Splash_Title = findViewById(R.id.a_s_title);
         Admin_Splash_Animation = findViewById(R.id.a_s_animation);
         Admin_Splash_Button = findViewById(R.id.A_S_Button);
-        Admin_Splash_Title.animate().translationY(300).setDuration(2000).setStartDelay(10);
+        Admin_Splash_Title.animate().translationY(200).setDuration(2000).setStartDelay(10);
         Admin_Splash_Animation.animate().translationX(0).setDuration(200000).setStartDelay(0);
         new Handler().postDelayed(new Runnable() {
             @Override

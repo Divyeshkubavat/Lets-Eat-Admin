@@ -22,6 +22,33 @@
         android:theme="@style/Theme.LetsEatAdmin"
         tools:targetApi="31">
         <activity
+            android:name=".Admin_Offer"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Offers_View_Design"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Offers"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Product_View_Design"
+            android:exported="false" />
+        <activity
+            android:name=".Amin_Offers"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Drink"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Combo"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Pizza"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Burger"
+            android:exported="false" />
+        <activity
             android:name=".Admin_Staff_Add"
             android:exported="false" />
         <activity
