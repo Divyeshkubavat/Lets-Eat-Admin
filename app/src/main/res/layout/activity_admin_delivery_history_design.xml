@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Admin_Delivery_History_Design">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:padding="@dimen/_3sdp"
+            android:layout_margin="@dimen/_3sdp"
+            android:gravity="center_horizontal">
+          <TextView
+              android:id="@+id/Admin_Delivery_History_OrderID"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Order ID"
+              android:textSize="@dimen/_15sdp"
+              android:layout_weight="1"
+             android:gravity="center_horizontal"
+              android:textColor="@color/app"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="|"
+                android:textSize="@dimen/_15sdp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/app"/>
+
+            <TextView
+                android:id="@+id/Admin_Delivery_History_Status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textSize="@dimen/_15sdp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textColor="@color/app"/>
+
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

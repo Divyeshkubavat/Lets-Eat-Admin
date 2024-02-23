@@ -40,7 +40,7 @@
 
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/Admin_Staff_Add_Image"
+                        android:id="@+id/Admin_Delivery_Add_Image"
                         android:layout_width="@dimen/_136sdp"
                         android:layout_height="@dimen/_136sdp"
                         android:layout_gravity="center_horizontal"
@@ -61,7 +61,7 @@
                         app:hintAnimationEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/Admin_Staff_Add_Name"
+                            android:id="@+id/Admin_Delivery_Add_Name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/custom_edittext"
@@ -81,7 +81,7 @@
                         app:boxStrokeWidthFocused="0dp"
                         app:hintAnimationEnabled="false">
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/Admin_Staff_Add_Mobile"
+                            android:id="@+id/Admin_Delivery_Add_Mobile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/custom_edittext"
@@ -104,7 +104,7 @@
                         app:hintAnimationEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/Admin_Staff_Add_Email"
+                            android:id="@+id/Admin_Delivery_Add_Email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/custom_edittext"
@@ -125,7 +125,7 @@
                         app:boxStrokeWidthFocused="0dp"
                         app:hintAnimationEnabled="false">
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/Admin_Staff_Add_Salary"
+                            android:id="@+id/Admin_Delivery_Add_Salary"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/custom_edittext"
@@ -138,7 +138,7 @@
                             android:singleLine="true" />
                     </com.google.android.material.textfield.TextInputLayout>
                     <Button
-                        android:id="@+id/Admin_Staff_Add_Button"
+                        android:id="@+id/Admin_Delivery_Add_Button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_24sdp"

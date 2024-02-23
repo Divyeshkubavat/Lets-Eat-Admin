@@ -1,5 +1,6 @@
 package com.example.letseatadmin;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,12 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AdminDelivery#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class AdminDelivery extends Fragment {
+
+    FloatingActionButton Admin_Delivery_Add_FloatButton;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +64,14 @@ public class AdminDelivery extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin_delivery, container, false);
+        View view = inflater.inflate(R.layout.fragment_admin_delivery, container, false);
+        Admin_Delivery_Add_FloatButton = view.findViewById(R.id.Admin_Delivery_ADD_FloatButton);
+        Admin_Delivery_Add_FloatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(),Admin_Delivery_Profile.class));
+            }
+        });
+        return view;
     }
 }

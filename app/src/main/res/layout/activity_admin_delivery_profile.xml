@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin_Delivery_Profile">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F8F5F5"
+        android:id="@+id/sw1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/_136sdp"
+                    android:layout_height="@dimen/_136sdp"
+                    android:layout_margin="@dimen/_24sdp"
+                    android:layout_marginTop="@dimen/_56sdp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="@dimen/_320sdp"
+                        android:background="@drawable/accout_background"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/circles"
+                            tools:layout_editor_absoluteX="minus60sdp"
+                            tools:layout_editor_absoluteY="0dp" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <TextView
+                        android:id="@+id/Admin_Delivery_Profile_Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:visibility="visible"
+                        android:textColor="@color/button"
+                        android:textSize="@dimen/_18sdp"
+                        app:layout_constraintEnd_toEndOf="@+id/Admin_Delivery_Profile_Image"
+                        app:layout_constraintStart_toStartOf="@+id/Admin_Delivery_Profile_Image"
+                        app:layout_constraintTop_toBottomOf="@+id/Admin_Delivery_Profile_Image" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/Admin_Delivery_Profile_Image"
+                        android:layout_width="@dimen/_136sdp"
+                        android:layout_height="@dimen/_136sdp"
+                        android:layout_marginTop="@dimen/_40sdp"
+                        android:src="@drawable/avatar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        android:layout_marginStart="@dimen/_19sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_19sdp"
+                        android:background="@drawable/user_background"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Admin_Delivery_Profile_Name">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal">
+                            <Button
+                                android:id="@+id/Admin_Delivery_Pofile_Edit_Button"
+                                android:layout_width="@dimen/_100sdp"
+                                android:layout_height="@dimen/_70sdp"
+                                android:text="EDIT"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:background="@drawable/admin_home_button_2" />
+                            <View
+                                android:layout_width="@dimen/_1sdp"
+                                android:layout_height="@dimen/_70sdp"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:background="@color/black"/>
+
+                            <Button
+                                android:id="@+id/Admin_Delivery_Profile_Delete_Button"
+                                android:layout_width="@dimen/_100sdp"
+                                android:layout_height="@dimen/_70sdp"
+                                android:text="DELETE"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:background="@drawable/admin_home_button_2" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Email : "
+                                android:textColor="@color/app"
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/Admin_Delivery_Profile_Email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textAlignment="viewEnd"
+                                android:textColor="@color/app"
+                                android:textSize="@dimen/_12sdp" />
+                        </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_margin="@dimen/_6sdp"
+                            android:background="@color/black" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Mobile : "
+                                android:textColor="@color/app"
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/Admin_Delivery_Profile_Mobile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textAlignment="viewEnd"
+                                android:textColor="@color/app"
+                                android:textSize="@dimen/_12sdp" />
+                        </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_margin="@dimen/_6sdp"
+                            android:background="@color/black" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Salary :"
+                                android:textColor="@color/app"
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:id="@+id/Admin_Delivery_Profile_Salary"
+                                android:textAlignment="viewEnd"
+                                android:textColor="@color/app"
+                                android:textSize="@dimen/_12sdp" />
+                        </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_margin="@dimen/_6sdp"
+                            android:background="@color/black" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:clickable="true"
+                            android:padding="@dimen/_8sdp"
+                            android:background="@drawable/admin_home_button_2"
+                            android:backgroundTint="@color/app"
+
+                            android:layout_margin="@dimen/_10sdp"
+                            android:gravity="center_horizontal">
+                            <TextView
+                                android:id="@+id/Admin_Delivery_Profile_History_Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Delivery History"
+                                android:clickable="true"
+                                android:layout_gravity="center_vertical"
+                                android:textSize="@dimen/_17sdp"
+                                android:textColor="@color/white" />
+                            <TextView
+                                android:id="@+id/Admin_Delivery_Profile_History_Button_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/baseline_arrow_downward_24"
+                                android:clickable="true"
+                                android:textSize="@dimen/_17sdp"
+                                android:textColor="@color/app"
+                                android:layout_marginLeft="@dimen/_15sdp"/>
+                        </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/Admin_Delivery_Profile_Recyclerview"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone"
+                            tools:listitem="@layout/activity_admin_delivery_history_design"/>
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    android:layout_margin="@dimen/_5sdp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>
