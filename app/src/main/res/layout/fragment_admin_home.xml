@@ -128,8 +128,7 @@
                                     android:layout_width="@dimen/_110sdp"
                                     android:layout_height="@dimen/_110sdp"
                                     android:layout_gravity="fill_vertical"
-                                    android:layout_marginBottom="@dimen/_5sdp"
-                                    >
+                                    android:layout_marginBottom="@dimen/_5sdp">
 
                                     <ImageButton
                                         android:id="@+id/Admin_Home_Burger"

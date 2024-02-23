@@ -46,7 +46,6 @@ public class AdminSplashScreen extends AppCompatActivity {
 
             }
         });
-
     }
     @Override
     public void onBackPressed() {
