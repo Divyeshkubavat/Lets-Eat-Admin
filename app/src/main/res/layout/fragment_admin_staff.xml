@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".AdminStaff">
     <ScrollView
         android:layout_width="match_parent"
@@ -17,14 +18,27 @@
                 android:layout_height="wrap_content"
                 android:text="Employees"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/white"
+                android:textColor="@color/app"
                 android:id="@+id/Admin_Staff_Heading"
                 android:textSize="@dimen/_30sdp"
                 android:layout_margin="@dimen/_10sdp">
             </TextView>
+            <androidx.appcompat.widget.SearchView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_44sdp"
+                android:hint="Search here"
+                android:id="@+id/Admin_Burger_Searchbar"
+                android:layout_below="@id/Admin_Burger_Title"
+                app:iconifiedByDefault="false"
+                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginRight="@dimen/_12sdp"
+                android:background="@drawable/search_design"
+                android:textAppearance="@color/white"
+                app:queryHint="Search here ...."/>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                tools:listitem="@layout/activity_admin_staff_design"
                 android:id="@+id/Admin_Staff_Recyclerview">
             </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>

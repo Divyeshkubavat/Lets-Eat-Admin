@@ -74,12 +74,14 @@
             </LinearLayout>
         </LinearLayout>
         <ImageView
-            android:layout_width="@dimen/_28sdp"
-            android:layout_height="@dimen/_28sdp"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
             android:layout_alignParentEnd="true"
             android:src="@drawable/baseline_delete_24"
             android:id="@+id/Admin_Product_Design_Delete"
             android:layout_centerVertical="true"
+            android:background="@drawable/image_border"
+            android:padding="@dimen/_5sdp"
             android:layout_marginRight="@dimen/_24sdp"/>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

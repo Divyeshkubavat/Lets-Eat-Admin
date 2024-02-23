@@ -23,6 +23,12 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:id="@+id/Admin_Offer_Title"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_margin="@dimen/_6sdp"
+                android:background="@color/black"
+                android:layout_below="@id/Admin_Offer_Title"/>
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

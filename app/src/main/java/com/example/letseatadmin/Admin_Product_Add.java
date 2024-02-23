@@ -23,8 +23,6 @@ public class Admin_Product_Add extends AppCompatActivity {
     RadioButton Admin_Product_Burger,Admin_Product_Pizza,Admin_Product_Combo,Admin_Product_Drink;
     Button Admin_Product_Button;
     boolean isCheck = false;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

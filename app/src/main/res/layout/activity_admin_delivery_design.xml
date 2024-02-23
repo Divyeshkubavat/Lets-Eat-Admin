@@ -4,24 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Admin_Staff_Design">
+    tools:context=".Admin_Delivery_Design">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_2sdp"
-        android:elevation="@dimen/_5sdp">
-
+        android:layout_margin="@dimen/_5sdp"
+        app:cardElevation="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_2sdp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/_5sdp">
+            android:orientation="horizontal">
+
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_gravity="center_vertical"
-                android:id="@+id/Admin_Staff_Image"
+                android:id="@+id/Admin_Delivery_Image"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
                 android:layout_centerVertical="true"
@@ -43,41 +41,15 @@
                 android:layout_marginLeft="@dimen/_6sdp">
 
                 <TextView
-                    android:id="@+id/Admin_Staff_Name"
+                    android:id="@+id/Admin_Delivery_Name"
                     android:layout_width="@dimen/_160sdp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
                     android:text="Kubavat Divyesh S."
                     android:textColor="@color/app"
                     android:textSize="@dimen/_14sdp"
                     android:textStyle="bold" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Admin_Staff_Name"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:text="Mo:-"
-                        android:textColor="@color/app"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/Admin_Staff_Mobile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/Admin_Staff_Name"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:text="7096011908"
-                        android:textColor="@color/app"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
-                </LinearLayout>
                 <TextView
-                    android:id="@+id/Admin_Staff_Email"
+                    android:id="@+id/Admin_Delivery_Email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/Admin_Staff_Mobile"
@@ -85,7 +57,7 @@
                     android:text="dkubavat0@gmail.com"
                     android:textColor="@color/app"
                     android:textSize="@dimen/_14sdp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -102,7 +74,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Admin_Staff_Salary"
+                        android:id="@+id/Admin_Delivery_Salary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/Admin_Staff_Email"
@@ -120,8 +92,9 @@
                 android:orientation="vertical"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_gravity="center_vertical">
+
                 <ImageView
-                    android:id="@+id/Admin_Staff_Mobile_Call"
+                    android:id="@+id/Admin_Delivery_Mobile"
                     android:layout_width="@dimen/_32sdp"
                     android:layout_height="@dimen/_32sdp"
                     android:layout_alignParentEnd="true"
@@ -135,6 +108,7 @@
                     android:layout_width="@dimen/_1sdp"
                     android:layout_height="@dimen/_10sdp"/>
                 <ImageView
+                    android:id="@+id/Admin_Delivery_Delete"
                     android:layout_width="@dimen/_32sdp"
                     android:layout_height="@dimen/_32sdp"
                     android:layout_alignParentEnd="true"
@@ -143,7 +117,12 @@
                     android:background="@drawable/image_border"
                     android:padding="@dimen/_3sdp"
                     android:src="@drawable/baseline_delete_24" />
+
+
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+
+
 </RelativeLayout>
