@@ -31,7 +31,6 @@ public class AdminProfile extends Fragment {
         Admin_Account_DOB=view.findViewById(R.id.Admin_Account_DOB);
         Admin_Account_Logout=view.findViewById(R.id.Admin_Account_Logout_Button);
         Admin_Account_Payment=view.findViewById(R.id.Admin_Account_Payment_button);
-        Admin_Account_FAQ=view.findViewById(R.id.Admin_Account_FAQ_Button);
         Admin_Account_Edit=view.findViewById(R.id.Admin_Account_Edit_Button);
         Admin_Account_Image=view.findViewById(R.id.Admin_Account_Image);
 
@@ -51,12 +50,6 @@ public class AdminProfile extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(),Admin_Payment.class));
-            }
-        });
-        Admin_Account_FAQ.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(),Admin_FAQ.class));
             }
         });
         return view;

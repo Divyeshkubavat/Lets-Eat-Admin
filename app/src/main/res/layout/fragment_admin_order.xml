@@ -3,15 +3,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AdminOrder">
-
-    <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    android:text="Order"
-    android:textColor="@color/white"/>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/app"
+                android:text="--: Orders :--"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/_25sdp"
+                android:padding="@dimen/_5sdp"
+                android:layout_margin="@dimen/_20sdp"/>
+            <androidx.appcompat.widget.SearchView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_44sdp"
+                android:hint="Search here"
+                android:id="@+id/Admin_Order_Searchview"
+                app:iconifiedByDefault="false"
+                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginRight="@dimen/_12sdp"
+                android:background="@drawable/search_design"
+                android:textAppearance="@color/white"
+                app:queryHint="Search here ...."/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Admin_Order_Recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                tools:listitem="@layout/activity_admin_order_design"/>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
