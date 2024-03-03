@@ -23,9 +23,9 @@ public class AdminSplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_splash_screen);
         getSupportActionBar().hide();
-        Admin_Splash_Title = findViewById(R.id.a_s_title);
-        Admin_Splash_Animation = findViewById(R.id.a_s_animation);
-        Admin_Splash_Button = findViewById(R.id.A_S_Button);
+        Admin_Splash_Title = findViewById(R.id.Admin_Splash_Title);
+        Admin_Splash_Animation = findViewById(R.id.Admin_Splash_Animation);
+        Admin_Splash_Button = findViewById(R.id.Admin_Splash_Swipebutton);
         Admin_Splash_Title.animate().translationY(200).setDuration(2000).setStartDelay(10);
         Admin_Splash_Animation.animate().translationX(0).setDuration(200000).setStartDelay(0);
         new Handler().postDelayed(new Runnable() {

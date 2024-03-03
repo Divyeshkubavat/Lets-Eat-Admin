@@ -10,47 +10,60 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/s2">
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="--: DRINKS :--"
+                android:text="😋 DRINKS 😋"
                 android:textColor="@color/app"
                 android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
                 android:textSize="@dimen/_32sdp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:id="@+id/Admin_Drink_Title"/>
-            <androidx.appcompat.widget.SearchView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_44sdp"
-                android:hint="Search here"
-                android:id="@+id/Admin_Drink_Searchbar"
-                android:layout_marginTop="@dimen/_24sdp"
-                android:layout_below="@id/Admin_Drink_Title"
-                app:iconifiedByDefault="false"
-                android:layout_marginLeft="@dimen/_12sdp"
-                android:layout_marginRight="@dimen/_12sdp"
-                android:background="@drawable/search_design"
-                android:textAppearance="@color/white"
-                app:queryHint="Search here ...."/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                android:layout_marginTop="@dimen/_10sdp">
+                <androidx.appcompat.widget.SearchView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_35sdp"
+                    android:hint="Search here"
+                    android:id="@+id/Admin_Drink_Searchbar"
+                    app:iconifiedByDefault="false"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:background="@drawable/search_design"
+                    android:textAppearance="@color/white"
+                    app:queryHint="Search here ...." />
+                <ImageView
+                    android:id="@+id/Admin_Drink_Filter"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:src="@drawable/filter"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_alignParentEnd="true"
+                    app:tint="@color/app" />
+            </LinearLayout>
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/Admin_Drink_Searchbar"
                 android:id="@+id/s1">
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:id="@+id/Admin_Drink_Recyclerview"
                     android:layout_marginLeft="@dimen/_3sdp"
                     android:layout_marginRight="@dimen/_3sdp"
                     android:layout_marginTop="@dimen/_24sdp"
                     tools:listitem="@layout/activity_admin_product_view_design"/>
             </ScrollView>
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
@@ -62,5 +75,4 @@
         android:layout_marginBottom="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:id="@+id/Admin_Drink_ADD_FloatButton"/>
-
 </RelativeLayout>

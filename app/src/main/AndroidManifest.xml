@@ -16,16 +16,19 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/background"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.LetsEatAdmin"
         tools:targetApi="31">
         <activity
-            android:name=".Admin_Payment_Design"
+            android:name=".Admin_Product_Filter"
             android:exported="false" />
         <activity
-            android:name=".Admin_payment_Design"
+            android:name=".Admin_Poduct_Filter"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_Payment_Design"
             android:exported="false" />
         <activity
             android:name=".Admin_Order_Design"
@@ -91,12 +94,6 @@
             android:name=".Admin_Staff_Design"
             android:exported="false" />
         <activity
-            android:name=".Admin_FAQ_Design"
-            android:exported="false" />
-        <activity
-            android:name=".Admin_FAQ"
-            android:exported="false" />
-        <activity
             android:name=".Admin_Payment"
             android:exported="false" />
         <activity
@@ -116,7 +113,8 @@
             android:exported="false" />
         <activity
             android:name=".AdminSplashScreen"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

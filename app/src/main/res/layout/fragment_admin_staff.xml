@@ -16,7 +16,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Employees"
+                android:text="😋 Employees 😋"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/app"
                 android:id="@+id/Admin_Staff_Heading"
@@ -34,7 +34,8 @@
                 android:layout_marginRight="@dimen/_12sdp"
                 android:background="@drawable/search_design"
                 android:textAppearance="@color/white"
-                app:queryHint="Search here ...."/>
+                app:queryHint="Search here ...."
+                android:layout_marginBottom="@dimen/_10sdp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

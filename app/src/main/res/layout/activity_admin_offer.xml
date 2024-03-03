@@ -16,7 +16,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="--: OFFERS :--"
+                android:text="😋 OFFERS 😋"
                 android:textColor="@color/app"
                 android:textStyle="bold"
                 android:textSize="@dimen/_32sdp"
@@ -55,5 +55,4 @@
         android:layout_marginBottom="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:id="@+id/Admin_Offer_ADD_FloatButton"/>
-
 </RelativeLayout>

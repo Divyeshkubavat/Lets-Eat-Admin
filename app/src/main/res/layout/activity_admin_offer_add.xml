@@ -26,7 +26,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/_40sdp"/>
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/Admin_Offer_Add_Image"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_136sdp"
@@ -35,13 +35,16 @@
                     android:clickable="true"
                     android:src="@drawable/upload_image"
                     app:civ_border_color="@color/app"
-                    app:civ_border_width="@dimen/_2sdp" />
+                    app:civ_border_width="@dimen/_2sdp"
+                    android:background="@drawable/image_border"
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:layout_marginRight="@dimen/_3sdp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
                     android:layout_marginTop="@dimen/_20sdp">
                     <View
                         android:layout_width="@dimen/_122sdp"

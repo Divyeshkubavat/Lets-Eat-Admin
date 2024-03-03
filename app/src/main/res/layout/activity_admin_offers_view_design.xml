@@ -45,7 +45,6 @@
                     android:id="@+id/Admin_Offer_Delete_Button"
                     android:background="@drawable/admin_home_button_2"
                     android:textSize="@dimen/_12sdp"/>
-
             </LinearLayout>
             <View
                 android:layout_width="match_parent"

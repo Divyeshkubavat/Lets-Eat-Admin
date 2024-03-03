@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -15,7 +16,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Admin_Offer_Add extends AppCompatActivity {
 
-    CircleImageView Admin_Offer_Add_Image;
+    ImageView Admin_Offer_Add_Image;
     RadioButton Admin_offer_Add_Burger,Admin_Offer_Add_Pizza,Admin_Offer_Add_Combo,Admin_Offer_Add_Drink;
     Button Admin_Offer_Add_Button;
     boolean isCheck = false;
