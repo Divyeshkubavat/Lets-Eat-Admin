@@ -43,7 +43,6 @@ public class AdminSplashScreen extends AppCompatActivity {
                         startActivity(intent);
                     }
                 },100);
-
             }
         });
     }
