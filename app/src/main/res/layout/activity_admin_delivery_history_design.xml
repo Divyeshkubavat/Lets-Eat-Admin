@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Admin_Delivery_History_Design">
+    tools:context=".Activities.Admin_Delivery_History_Design">
 
     <TableLayout
         android:layout_width="match_parent"

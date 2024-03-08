@@ -11,8 +11,8 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.CALL_PRIVILEGED"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CALL_PRIVILEGED" />
 
     <application
         android:allowBackup="true"
@@ -25,31 +25,34 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Admin_Staff_Edit"
+            android:name=".Activities.Admin_Delivery_Edit"
             android:exported="false" />
         <activity
-            android:name=".Admin_Peoduct_Edit"
+            android:name=".Activities.Admin_Staff_Edit"
             android:exported="false" />
         <activity
-            android:name=".Admin_Offer_Edit"
+            android:name=".Activities.Admin_Peoduct_Edit"
             android:exported="false" />
         <activity
-            android:name=".Admin_Product_Filter"
+            android:name=".Activities.Admin_Offer_Edit"
             android:exported="false" />
         <activity
-            android:name=".Admin_Payment_Design"
+            android:name=".Activities.Admin_Product_Filter"
             android:exported="false" />
         <activity
-            android:name=".Admin_Order_Design"
+            android:name=".Activities.Admin_Payment_Design"
             android:exported="false" />
         <activity
-            android:name=".Admin_Delivery_History_Design"
+            android:name=".Activities.Admin_Order_Design"
             android:exported="false" />
         <activity
-            android:name=".Admin_Delivery_Profile"
+            android:name=".Activities.Admin_Delivery_History_Design"
             android:exported="false" />
         <activity
-            android:name=".Admin_delivery_Add_Edit"
+            android:name=".Activities.Admin_Delivery_Profile"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Admin_delivery_Add_Edit"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -67,61 +70,61 @@
             android:value="YOUR_API_KEY" />
 
         <activity
-            android:name=".Admin_Delivery_Design"
+            android:name=".Activities.Admin_Delivery_Design"
             android:exported="false" />
         <activity
-            android:name=".Admin_Offer_Add"
+            android:name=".Activities.Admin_Offer_Add"
             android:exported="false" />
         <activity
-            android:name=".Admin_Product_Add"
+            android:name=".Activities.Admin_Product_Add"
             android:exported="false" />
         <activity
-            android:name=".Admin_Offer"
+            android:name=".Activities.Admin_Offer"
             android:exported="false" />
         <activity
-            android:name=".Admin_Offers_View_Design"
+            android:name=".Activities.Admin_Offers_View_Design"
             android:exported="false" />
         <activity
-            android:name=".Admin_Product_View_Design"
+            android:name=".Activities.Admin_Product_View_Design"
             android:exported="false" />
         <activity
-            android:name=".Admin_Drink"
+            android:name=".Activities.Admin_Drink"
             android:exported="false" />
         <activity
-            android:name=".Admin_Combo"
+            android:name=".Activities.Admin_Combo"
             android:exported="false" />
         <activity
-            android:name=".Admin_Pizza"
+            android:name=".Activities.Admin_Pizza"
             android:exported="false" />
         <activity
-            android:name=".Admin_Burger"
+            android:name=".Activities.Admin_Burger"
             android:exported="false" />
         <activity
-            android:name=".Admin_Staff_Add"
+            android:name=".Activities.Admin_Staff_Add"
             android:exported="false" />
         <activity
-            android:name=".Admin_Staff_Design"
+            android:name=".Activities.Admin_Staff_Design"
             android:exported="false" />
         <activity
-            android:name=".Admin_Payment"
+            android:name=".Activities.Admin_Payment"
             android:exported="false" />
         <activity
-            android:name=".Admin_Edit"
+            android:name=".Activities.Admin_Edit"
             android:exported="false" />
         <activity
-            android:name=".Admin_UID_Verify"
+            android:name=".Activities.Admin_UID_Verify"
             android:exported="false" />
         <activity
-            android:name=".Admin_Registration"
+            android:name=".Activities.Admin_Registration"
             android:exported="false" />
         <activity
-            android:name=".Admin_Login"
+            android:name=".Activities.Admin_Login"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".AdminSplashScreen"
+            android:name=".Activities.AdminSplashScreen"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

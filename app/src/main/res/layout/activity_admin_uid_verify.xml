@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app"
-    tools:context=".Admin_UID_Verify">
+    tools:context=".Activities.Admin_UID_Verify">
 
     <ScrollView
         android:layout_width="match_parent"

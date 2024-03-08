@@ -5,6 +5,7 @@ import com.example.letseatadmin.Models.Offer;
 import com.example.letseatadmin.Models.Product;
 import com.example.letseatadmin.Models.Staff;
 import com.example.letseatadmin.Models.adminLogin;
+import com.example.letseatadmin.Models.deliveryBoy;
 
 import java.util.List;
 
@@ -94,4 +95,23 @@ public interface AdminApi {
     Call<String> deleteStaff(
             @Query("staffId") int id
     );
+
+    @POST("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/delivery-boy/add")
+    Call<deliveryBoy> addDeliveryBoy(@Body deliveryBoy boy);
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/delivery-boy/get-all")
+    Call<List<deliveryBoy>> getAllDeliveryBoy();
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/delivery-boy/get")
+    Call<deliveryBoy> getSingleDeliveryBoy(
+            @Query("deliveryBoyId") int id
+    );
+
+    @PUT("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/delivery-boy/update")
+    Call<deliveryBoy> updateDeliveryBoy(
+            @Query("deliveryBoyId") int id,@Body deliveryBoy boy
+    );
+
+    @DELETE("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/delivery-boy/delete")
+    Call<String> deleteDeliveryBoy();
 }

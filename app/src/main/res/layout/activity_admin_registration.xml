@@ -7,7 +7,7 @@
     android:scrollbarAlwaysDrawHorizontalTrack="true"
     android:scrollbarAlwaysDrawVerticalTrack="true"
     android:background="#281818"
-    tools:context=".Admin_Registration">
+    tools:context=".Activities.Admin_Registration">
 
     <ScrollView
         android:layout_width="match_parent"

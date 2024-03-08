@@ -8,27 +8,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.letseatadmin.Admin_Offer;
-import com.example.letseatadmin.Admin_Offer_Add;
-import com.example.letseatadmin.Admin_Offer_Edit;
-import com.example.letseatadmin.Models.Delivery_history_Item;
+import com.example.letseatadmin.Activities.Admin_Offer_Edit;
 import com.example.letseatadmin.Models.Offer;
 import com.example.letseatadmin.R;
 import com.example.letseatadmin.Retrofit.AdminApi;
 import com.example.letseatadmin.Retrofit.RetrofitServices;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

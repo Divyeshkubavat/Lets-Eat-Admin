@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app"
-    tools:context=".Admin_Edit">
+    tools:context=".Activities.Admin_Edit">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

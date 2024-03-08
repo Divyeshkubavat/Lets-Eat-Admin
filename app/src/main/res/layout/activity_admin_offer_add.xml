@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/_20sdp"
     android:layout_gravity="start"
-    tools:context=".Admin_Offer_Add">
+    tools:context=".Activities.Admin_Offer_Add">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

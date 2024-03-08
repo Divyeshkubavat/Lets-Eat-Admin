@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,9 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.letseatadmin.Admin_Offer_Edit;
-import com.example.letseatadmin.Admin_Peoduct_Edit;
-import com.example.letseatadmin.Models.Offer;
+import com.example.letseatadmin.Activities.Admin_Peoduct_Edit;
 import com.example.letseatadmin.Models.Product;
 import com.example.letseatadmin.R;
 import com.example.letseatadmin.Retrofit.AdminApi;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin_delivery_Add_Edit">
+    tools:context=".Activities.Admin_delivery_Add_Edit">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -114,6 +114,28 @@
                             android:padding="@dimen/_12sdp"
                             android:singleLine="true" />
 
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        app:hintAnimationEnabled="true"
+                        android:hint=" "
+                        app:passwordToggleEnabled="true"
+                        app:boxStrokeWidth="0dp"
+                        app:boxBackgroundColor="#ffffff"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:passwordToggleTint="#281818"
+                        app:startIconTint="#281818"
+                        app:startIconDrawable="@drawable/baseline_lock_24">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_edittext"
+                        android:id="@+id/Admin_Delivery_Add_Password"
+                        android:inputType="textPassword"
+                        android:padding="@dimen/_12sdp"
+                        android:hint="Password"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"

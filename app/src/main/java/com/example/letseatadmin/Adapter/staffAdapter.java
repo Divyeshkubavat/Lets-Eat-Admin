@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,14 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.letseatadmin.Admin_Staff_Edit;
-import com.example.letseatadmin.Models.Product;
+import com.example.letseatadmin.Activities.Admin_Staff_Edit;
 import com.example.letseatadmin.Models.Staff;
 import com.example.letseatadmin.R;
 import com.example.letseatadmin.Retrofit.AdminApi;
 import com.example.letseatadmin.Retrofit.RetrofitServices;
 
-import java.net.URI;
 import java.util.ArrayList;
 
 import retrofit2.Call;
