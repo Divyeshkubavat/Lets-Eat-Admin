@@ -1,6 +1,9 @@
 package com.example.letseatadmin;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,9 +16,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.letseatadmin.Models.Admin;
+import com.example.letseatadmin.Retrofit.AdminApi;
+import com.example.letseatadmin.Retrofit.RetrofitServices;
+
 import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class AdminHome extends Fragment {
@@ -26,6 +36,9 @@ public class AdminHome extends Fragment {
     TextView Admin_Home_Name,Admin_Home_Greeting;
 
     int Greeting_Hour;
+    String Login_Uid;
+    RetrofitServices retrofitServices;
+    AdminApi adminApi;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,6 +57,23 @@ public class AdminHome extends Fragment {
         Admin_Home_Pizza=view.findViewById(R.id.Admin_Home_Pizza);
         Admin_Home_Offers=view.findViewById(R.id.Admin_Home_Offers);
         Admin_Home_Image=view.findViewById(R.id.Admin_Home_Image);
+        retrofitServices = new RetrofitServices();
+        adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
+
+        SharedPreferences preferences = getActivity().getSharedPreferences("Login", MODE_PRIVATE);
+        Login_Uid = preferences.getString("Login_UID","");
+        adminApi.getSingleUser(Login_Uid).enqueue(new Callback<Admin>() {
+            @Override
+            public void onResponse(Call<Admin> call, Response<Admin> response) {
+                String name = response.body().getName();
+                Admin_Home_Name.setText("Hi "+name);
+            }
+
+            @Override
+            public void onFailure(Call<Admin> call, Throwable t) {
+
+            }
+        });
         Calendar calendar = Calendar.getInstance();
         Greeting_Hour = calendar.get(Calendar.HOUR_OF_DAY);
         if(Greeting_Hour >= 12 && Greeting_Hour < 17)
@@ -89,4 +119,5 @@ public class AdminHome extends Fragment {
         });
         return view;
     }
+
 }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,10 +41,12 @@ public class Admin_Product_Add extends AppCompatActivity {
     AdminApi adminApi;
     String type;
     int Category_Code;
+    ProgressDialog pg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_product_add);
+        pg = new ProgressDialog(this);
         Admin_Product_Add_Image = findViewById(R.id.Admin_Product_Add_Image);
         Admin_Product_Burger = findViewById(R.id.Admin_Product_Add_Burger_Radio);
         Admin_Product_Drink = findViewById(R.id.Admin_Product_Add_Drink_Radio);
@@ -138,6 +141,10 @@ public class Admin_Product_Add extends AppCompatActivity {
     }
     private void setProduct()
     {
+        pg.setTitle("Loading..... ");
+        pg.setMessage("Adding Product ... ");
+        pg.setCanceledOnTouchOutside(false);
+        pg.show();
         String name,des;
         double price;
         name = Admin_product_Name.getText().toString();

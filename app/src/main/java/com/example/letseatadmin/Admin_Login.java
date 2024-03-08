@@ -167,10 +167,9 @@ public class Admin_Login extends AppCompatActivity {
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                Admin_Login_Progressbar.cancel();
+                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             }
                         },1000);
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
                     }
                 }
                 @Override

@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PRIVILEGED"/>
 
     <application
         android:allowBackup="true"
@@ -22,6 +24,9 @@
         android:theme="@style/Theme.LetsEatAdmin"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".Admin_Staff_Edit"
+            android:exported="false" />
         <activity
             android:name=".Admin_Peoduct_Edit"
             android:exported="false" />

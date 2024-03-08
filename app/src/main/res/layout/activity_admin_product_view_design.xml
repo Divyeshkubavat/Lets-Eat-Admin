@@ -53,7 +53,7 @@
                             android:layout_width="@dimen/_160sdp"
                             android:layout_height="wrap_content"
                             android:text="Cheese Burger"
-                            android:textSize="@dimen/_14sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textStyle="bold"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:textColor="@color/app"
@@ -62,7 +62,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="100 RS"
-                            android:textSize="@dimen/_14sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:textStyle="bold"
@@ -76,7 +76,7 @@
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:textStyle="bold"
-                            android:textSize="@dimen/_14sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textColor="@color/app" />
                     </LinearLayout>
                 </LinearLayout>
@@ -90,8 +90,8 @@
 
                 <ImageView
                     android:id="@+id/Admin_Product_Design_Edit"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/_24sdp"

@@ -1,8 +1,10 @@
 package com.example.letseatadmin;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,10 +12,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.letseatadmin.Models.Staff;
+import com.example.letseatadmin.Retrofit.AdminApi;
+import com.example.letseatadmin.Retrofit.RetrofitServices;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import dalvik.annotation.optimization.CriticalNative;
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Admin_Staff_Add extends AppCompatActivity {
 
@@ -22,10 +35,18 @@ public class Admin_Staff_Add extends AppCompatActivity {
     Button Admin_Staff_Button;
     public Uri imageuri=Uri.EMPTY;
     boolean isCheck = false;
+    RetrofitServices retrofitServices;
+    AdminApi adminApi;
+    String name,email;
+    long mobile;
+    double salary;
+    public FirebaseStorage firebaseStorage;
+    ProgressDialog pg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        pg = new ProgressDialog(this);
         setContentView(R.layout.activity_admin_staff_add);
         Admin_Staff_Button = findViewById(R.id.Admin_Staff_Add_Button);
         Admin_Staff_Email =  findViewById(R.id.Admin_Staff_Add_Email);
@@ -33,20 +54,13 @@ public class Admin_Staff_Add extends AppCompatActivity {
         Admin_Staff_Salary=findViewById(R.id.Admin_Staff_Add_Salary);
         Admin_Staff_Mobile=findViewById(R.id.Admin_Staff_Add_Mobile);
         Admin_Staff_Image=findViewById(R.id.Admin_Staff_Add_Image);
+        retrofitServices = new RetrofitServices();
+        adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
 
         Admin_Staff_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    isCheck =check();
-                    if(isCheck)
-                    {
-                        Toast.makeText(Admin_Staff_Add.this, "Employee Added Successfully", Toast.LENGTH_SHORT).show();;
-                        finish();
-                    }
-                    else
-                    {
-                        Toast.makeText(Admin_Staff_Add.this, "Fill All Field", Toast.LENGTH_SHORT).show();
-                    }
+                    addStaff();
             }
         });
         Admin_Staff_Image.setOnClickListener(new View.OnClickListener() {
@@ -102,5 +116,56 @@ public class Admin_Staff_Add extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+    private void addStaff(){
+        pg.setTitle("Loading..... ");
+        pg.setMessage("Adding Staff ... ");
+        pg.setCanceledOnTouchOutside(false);
+        pg.show();
+        firebaseStorage = FirebaseStorage.getInstance();
+        final StorageReference reference = firebaseStorage.getReference().child(String.valueOf(System.currentTimeMillis()));
+        isCheck=check();
+        if(isCheck)
+        {
+            getData();
+            reference.putFile(imageuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Staff s = new Staff();
+                            s.setEmail(email);
+                            s.setName(name);
+                            s.setSalary(salary);
+                            s.setMobileNo(mobile);
+                            s.setImageUrl(String.valueOf(uri));
+                            adminApi.addStaff(s).enqueue(new Callback<Staff>() {
+                                @Override
+                                public void onResponse(Call<Staff> call, Response<Staff> response) {
+                                    Toast.makeText(Admin_Staff_Add.this, "Staff Added Successfully", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+
+                                @Override
+                                public void onFailure(Call<Staff> call, Throwable t) {
+                                    Toast.makeText(Admin_Staff_Add.this, "failed", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                }
+            });
+        }
+    }
+    private void getData(){
+        name=Admin_Staff_Name.getText().toString();
+        salary= Double.parseDouble(Admin_Staff_Salary.getText().toString());
+        mobile= Long.parseLong(Admin_Staff_Mobile.getText().toString());
+        email=Admin_Staff_Email.getText().toString();
     }
 }

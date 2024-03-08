@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -44,11 +45,13 @@ public class Admin_Peoduct_Edit extends AppCompatActivity {
     String name,desc,ptype,image;
     int id,category,rate;
     double price;
+    ProgressDialog pg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_peoduct_edit);
+        pg = new ProgressDialog(this);
         Admin_Product_Edit_Image = findViewById(R.id.Admin_Product_Edit_Image);
         Admin_Product_Burger = findViewById(R.id.Admin_Product_Edit_Burger_Radio);
         Admin_Product_Drink = findViewById(R.id.Admin_Product_Edit_Drink_Radio);
@@ -173,6 +176,10 @@ public class Admin_Peoduct_Edit extends AppCompatActivity {
         return true;
     }
     private void updateProduct(){
+        pg.setTitle("Loading..... ");
+        pg.setMessage("Update Product ... ");
+        pg.setCanceledOnTouchOutside(false);
+        pg.show();
         firebaseStorage = FirebaseStorage.getInstance();
         final StorageReference reference = firebaseStorage.getReference().child(String.valueOf(System.currentTimeMillis()));
         isCheck=check();

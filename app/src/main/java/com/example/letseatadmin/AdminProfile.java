@@ -3,10 +3,12 @@ package com.example.letseatadmin;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -37,6 +39,7 @@ public class AdminProfile extends Fragment {
     RetrofitServices retrofitServices;
     AdminApi adminApi;
     ProgressDialog pg;
+    String Login_Uid;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -67,13 +70,34 @@ public class AdminProfile extends Fragment {
         Admin_Account_Payment=view.findViewById(R.id.Admin_Account_Payment_button);
         Admin_Account_Edit=view.findViewById(R.id.Admin_Account_Edit_Button);
         Admin_Account_Image=view.findViewById(R.id.Admin_Account_Image);
+        SharedPreferences preferences = getActivity().getSharedPreferences("Login", MODE_PRIVATE);
+        Login_Uid = preferences.getString("Login_UID","");
 
 
 
         Admin_Account_Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext().getApplicationContext(),Admin_Login.class));
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle("Logout ?");
+                builder.setMessage("Are you sure you want to logout ?");
+                builder.setNegativeButton("Logout", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.clear();
+                        editor.commit();
+                        editor.apply();
+                        startActivity(new Intent(getContext().getApplicationContext(), Admin_Login.class));
+                    }
+                });
+                builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(view.getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.show();
             }
         });
         Admin_Account_Edit.setOnClickListener(new View.OnClickListener() {

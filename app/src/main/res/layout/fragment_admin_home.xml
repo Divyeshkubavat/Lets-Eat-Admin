@@ -77,7 +77,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_16sdp"
                         android:visibility="visible"
-                        android:text="Hi ! Divyesh Kubavat"
+                        android:text=""
                         android:textStyle="bold"
                         android:fontFamily="sans-serif"
                         android:textColor="@color/white"

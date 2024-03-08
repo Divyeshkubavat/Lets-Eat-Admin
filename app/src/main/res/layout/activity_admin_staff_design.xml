@@ -9,9 +9,12 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="@dimen/_5sdp"
+        app:cardElevation="@dimen/_10sdp"
         app:cardCornerRadius="@dimen/_2sdp"
-        android:elevation="@dimen/_5sdp">
+        android:layout_marginLeft="@dimen/_3sdp"
+        android:layout_marginRight="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginBottom="@dimen/_1sdp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,8 +28,8 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_gravity="center_vertical"
                     android:id="@+id/Admin_Staff_Image"
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_80sdp"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="@dimen/_65sdp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:layout_marginTop="@dimen/_6sdp"
@@ -51,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:text="Kubavat Divyesh S."
                         android:textColor="@color/app"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_11sdp"
                         android:textStyle="bold" />
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -61,10 +64,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/Admin_Staff_Name"
-                            android:layout_marginTop="@dimen/_4sdp"
                             android:text="Mo:-"
                             android:textColor="@color/app"
-                            android:textSize="@dimen/_14sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -72,10 +74,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/Admin_Staff_Name"
-                            android:layout_marginTop="@dimen/_4sdp"
                             android:text="7096011908"
                             android:textColor="@color/app"
-                            android:textSize="@dimen/_14sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textStyle="bold" />
                     </LinearLayout>
                     <TextView
@@ -83,10 +84,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/Admin_Staff_Mobile"
-                        android:layout_marginTop="@dimen/_4sdp"
                         android:text="dkubavat0@gmail.com"
                         android:textColor="@color/app"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_11sdp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -97,10 +97,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/Admin_Staff_Email"
-                            android:layout_marginTop="@dimen/_4sdp"
                             android:text="Salary:-"
                             android:textColor="@color/app"
-                            android:textSize="@dimen/_14sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -108,10 +107,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/Admin_Staff_Email"
-                            android:layout_marginTop="@dimen/_4sdp"
                             android:text="30000 RS"
                             android:textColor="@color/app"
-                            android:textSize="@dimen/_14sdp"
+                            android:textSize="@dimen/_11sdp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -129,8 +127,8 @@
                 android:layout_marginRight="@dimen/_15sdp">
                 <ImageView
                     android:id="@+id/Admin_Staff_Mobile_Call"
-                    android:layout_width="@dimen/_32sdp"
-                    android:layout_height="@dimen/_32sdp"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
                     android:background="@drawable/image_border"
                     android:padding="@dimen/_3sdp"
                     android:src="@drawable/baseline_call_24" />
@@ -139,8 +137,9 @@
                     android:layout_width="@dimen/_1sdp"
                     android:layout_height="@dimen/_10sdp"/>
                 <ImageView
-                    android:layout_width="@dimen/_32sdp"
-                    android:layout_height="@dimen/_32sdp"
+                    android:id="@+id/Admin_Staff_Delete"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
                     android:background="@drawable/image_border"
                     android:padding="@dimen/_3sdp"
                     android:src="@drawable/baseline_delete_24" />

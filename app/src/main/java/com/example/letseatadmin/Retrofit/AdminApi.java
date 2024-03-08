@@ -3,6 +3,7 @@ package com.example.letseatadmin.Retrofit;
 import com.example.letseatadmin.Models.Admin;
 import com.example.letseatadmin.Models.Offer;
 import com.example.letseatadmin.Models.Product;
+import com.example.letseatadmin.Models.Staff;
 import com.example.letseatadmin.Models.adminLogin;
 
 import java.util.List;
@@ -17,7 +18,7 @@ import retrofit2.http.Query;
 
 public interface AdminApi {
 
-    @POST("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/admin/add/")
+    @POST("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/admin/add")
     Call<Admin> save(@Body Admin admin);
 
     @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/admin/")
@@ -73,5 +74,24 @@ public interface AdminApi {
             @Query("productId") int id
     );
 
+    @POST("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/staff/add")
+    Call<Staff> addStaff(@Body Staff staff);
 
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/staff/get-all")
+    Call<List<Staff>> getAllStaff();
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/staff/get")
+    Call<Staff> getSingleStaff(
+            @Query("staffId") int id
+    );
+
+    @PUT("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/staff/update")
+    Call<Staff> updateStaff(
+            @Query("staffId") int id,@Body Staff staff
+    );
+
+    @DELETE("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/staff/delete")
+    Call<String> deleteStaff(
+            @Query("staffId") int id
+    );
 }

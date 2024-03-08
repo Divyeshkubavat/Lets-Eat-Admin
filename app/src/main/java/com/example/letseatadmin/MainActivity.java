@@ -7,12 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -23,18 +25,23 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView navigationView;
     NetworkChangeListener listener = new NetworkChangeListener();
+    ProgressDialog pg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
        // getSupportActionBar().hide();
+        pg = new ProgressDialog(this);
         navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setSelectedItemId(R.id.Admin_Home);
         ActionBar actionBar = getSupportActionBar();
         ColorDrawable drawable = new ColorDrawable(Color.parseColor("#281818"));
         actionBar.setBackgroundDrawable(drawable);
         getSupportFragmentManager().beginTransaction().replace(R.id.container2,new AdminHome()).commit();
-
+        pg.setTitle("Loading ......");
+        pg.setMessage("Please Wait ....");
+        pg.setCanceledOnTouchOutside(true);
+        pg.show();
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -60,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pg.dismiss();
+            }
+        },1500);
     }
 
     @Override
