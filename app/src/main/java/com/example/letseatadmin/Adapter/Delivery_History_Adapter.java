@@ -22,13 +22,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Delivery_History_Adapter extends RecyclerView.Adapter<MyViewHolder>
 {
+    ArrayList<Delivery_history_Item> list;
+    Context context;
     public Delivery_History_Adapter(ArrayList<Delivery_history_Item> list, Context context) {
-        List = list;
+        this.list = list;
         this.context = context;
     }
 
-    ArrayList<Delivery_history_Item> List;
-    Context context;
+
 
     @NonNull
     @Override
@@ -38,14 +39,14 @@ public class Delivery_History_Adapter extends RecyclerView.Adapter<MyViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.Order_ID.setText(List.get(position).getOrder_ID());
-        holder.Status.setText(List.get(position).getStatus());
+        holder.Order_ID.setText(list.get(position).getOrder_ID());
+        holder.Status.setText(list.get(position).getStatus());
     }
 
 
     @Override
     public int getItemCount() {
-        return List.size();
+        return list.size();
     }
 }
 class MyViewHolder extends RecyclerView.ViewHolder

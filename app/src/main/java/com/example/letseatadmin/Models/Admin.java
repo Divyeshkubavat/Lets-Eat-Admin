@@ -3,6 +3,7 @@ package com.example.letseatadmin.Models;
 public class Admin {
     private int id;
     private String name;
+    private String adminUId;
     private long mobileNo;
     private String email;
     private String password;
@@ -57,5 +58,13 @@ public class Admin {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getAdminUId() {
+        return adminUId;
+    }
+
+    public void setAdminUId(String adminUId) {
+        this.adminUId = adminUId;
     }
 }

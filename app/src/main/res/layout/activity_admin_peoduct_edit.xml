@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin_Product_Add">
+    tools:context=".Admin_Peoduct_Edit">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,7 +20,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Item"
+                    android:text="Edit Item"
                     android:textColor="@color/app"
                     android:textSize="@dimen/_32sdp"
                     android:layout_gravity="center_horizontal"
@@ -27,7 +28,7 @@
                     android:layout_marginTop="@dimen/_40sdp"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/Admin_Product_Add_Image"
+                    android:id="@+id/Admin_Product_Edit_Image"
                     android:layout_width="@dimen/_136sdp"
                     android:layout_height="@dimen/_136sdp"
                     android:layout_gravity="center_horizontal"
@@ -54,7 +55,7 @@
                         android:background="@drawable/custom_edittext"
                         android:padding="@dimen/_12sdp"
                         android:hint="Prduct Name"
-                        android:id="@+id/Admin_Product_Add_Name"
+                        android:id="@+id/Admin_Product_Edit_Name"
                         android:singleLine="true"
                         android:drawableLeft="@drawable/baseline_star_24"
                         android:drawablePadding="@dimen/_8sdp"/>
@@ -76,7 +77,7 @@
                         android:background="@drawable/custom_edittext"
                         android:padding="@dimen/_12sdp"
                         android:hint="Product Price"
-                        android:id="@+id/Admin_Product_Add_Price"
+                        android:id="@+id/Admin_Product_Edit_Price"
                         android:maxLength="10"
                         android:singleLine="true"
                         android:drawableLeft="@drawable/baseline_attach_money_24"
@@ -99,7 +100,7 @@
                         android:background="@drawable/custom_edittext"
                         android:padding="@dimen/_12sdp"
                         android:hint="Product Description"
-                        android:id="@+id/Admin_Product_Add_Description"
+                        android:id="@+id/Admin_Product_Edit_Description"
                         android:singleLine="false"
                         android:drawableLeft="@drawable/baseline_info_24"
                         android:drawablePadding="@dimen/_8sdp"/>
@@ -128,7 +129,7 @@
                         <RadioButton
                             android:layout_width="@dimen/_65sdp"
                             android:layout_height="@dimen/_65sdp"
-                            android:id="@+id/Admin_Product_Add_Burger_Radio"
+                            android:id="@+id/Admin_Product_Edit_Burger_Radio"
                             android:textSize="@dimen/_16sdp"
                             android:button="@android:color/transparent"
                             android:background="@drawable/radio_selector"
@@ -142,7 +143,7 @@
                             android:layout_height="@dimen/_65sdp"
                             android:layout_marginLeft="@dimen/_12sdp"
                             android:textSize="@dimen/_16sdp"
-                            android:id="@+id/Admin_Product_Add_Pizza_Radio"
+                            android:id="@+id/Admin_Product_Edit_Pizza_Radio"
                             android:foreground="@drawable/pizza"
                             android:button="@android:color/transparent"
                             android:background="@drawable/radio_selector"
@@ -154,7 +155,7 @@
                             android:layout_height="@dimen/_65sdp"
                             android:layout_marginLeft="@dimen/_12sdp"
                             android:textSize="@dimen/_16sdp"
-                            android:id="@+id/Admin_Product_Add_Combo_Radio"
+                            android:id="@+id/Admin_Product_Edit_Combo_Radio"
                             android:foreground="@drawable/combo"
                             android:button="@android:color/transparent"
                             android:background="@drawable/radio_selector"
@@ -166,7 +167,7 @@
                             android:layout_height="@dimen/_65sdp"
                             android:layout_marginLeft="@dimen/_12sdp"
                             android:textSize="@dimen/_16sdp"
-                            android:id="@+id/Admin_Product_Add_Drink_Radio"
+                            android:id="@+id/Admin_Product_Edit_Drink_Radio"
                             android:foreground="@drawable/drink"
                             android:button="@android:color/transparent"
                             android:background="@drawable/radio_selector"
@@ -195,7 +196,7 @@
                         android:layout_height="@dimen/_50sdp"
                         android:orientation="horizontal">
                         <RadioButton
-                            android:id="@+id/Admin_Product_Add_Veg_Radio"
+                            android:id="@+id/Admin_Product_Edit_Veg_Radio"
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_marginLeft="@dimen/_12sdp"
@@ -207,7 +208,7 @@
                             android:textAlignment="center"
                             android:elevation="@dimen/_4sdp"/>
                         <RadioButton
-                            android:id="@+id/Admin_Product_Add_Nonveg_Radio"
+                            android:id="@+id/Admin_Product_Edit_Nonveg_Radio"
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_marginLeft="@dimen/_12sdp"
@@ -223,7 +224,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
-                    android:id="@+id/Admin_Product_Add_Button"
+                    android:id="@+id/Admin_Product_Edit_Button"
                     android:text="ADD"
                     android:textSize="@dimen/_14sdp"
                     android:layout_marginTop="@dimen/_20sdp"
@@ -235,4 +236,4 @@
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

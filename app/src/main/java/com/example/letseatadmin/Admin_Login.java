@@ -21,10 +21,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.letseatadmin.Models.adminLogin;
+import com.example.letseatadmin.Retrofit.AdminApi;
+import com.example.letseatadmin.Retrofit.RetrofitServices;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Admin_Login extends AppCompatActivity {
     TextInputEditText Admin_Login_Password,Admin_Login_UID;
@@ -34,6 +41,8 @@ public class Admin_Login extends AppCompatActivity {
     LottieAnimationView Admin_Login_Animation;
     TextView Admin_Login_Signup;
     boolean ischeck = false;
+    RetrofitServices retrofitServices;
+    AdminApi adminApi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,12 +56,19 @@ public class Admin_Login extends AppCompatActivity {
         Admin_Login_Password=findViewById(R.id.Admin_Login_Password);
         Admin_Login_Animation=findViewById(R.id.Admin_Login_Animation);
         Admin_Login_Signup=findViewById(R.id.Admin_Login_Signup);
+        retrofitServices = new RetrofitServices();
+        adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
         Admin_Login_Animation.animate().translationX(0).setDuration(200000).setStartDelay(0);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-            }
-        },0);
+
+        SharedPreferences preferences = getSharedPreferences("Login",MODE_PRIVATE);
+        String id = preferences.getString("Login_UID","");
+        if(id.equals(""))
+        {
+        }
+        else {
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        }
+
 
         Admin_Login_Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,13 +76,7 @@ public class Admin_Login extends AppCompatActivity {
                 ischeck = check();
                 if(ischeck)
                 {
-                    Admin_Login_Progressbar.show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        }
-                    },1500);
+                    verify();
                 }
                 else {
                     Toast.makeText(Admin_Login.this, "Please enter valid Admin ID or password", Toast.LENGTH_SHORT).show();
@@ -122,5 +132,52 @@ public class Admin_Login extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    private void verify()
+    {
+        String id = Admin_Login_UID.getText().toString();
+        String pass = Admin_Login_Password.getText().toString();
+        ischeck = check();
+        if(ischeck)
+        {
+            adminLogin login = new adminLogin();
+            login.setAdminUId(id);
+            login.setPassword(pass);
+
+            adminApi.adminVerify(login).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    String temp = String.valueOf(response.code());
+                    if(temp.equals("404"))
+                    {
+                        Toast.makeText(Admin_Login.this, "User Not Found ", Toast.LENGTH_SHORT).show();
+                        Admin_Login_Progressbar.cancel();
+
+                    } else if (temp.equals("401")) {
+                        Toast.makeText(Admin_Login.this, "Password Incorrect", Toast.LENGTH_SHORT).show();
+                        Admin_Login_Progressbar.cancel();
+                    }else
+                    {
+                        SharedPreferences preferences = getSharedPreferences("Login",MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("Login_UID",id);
+                        editor.commit();
+                        Admin_Login_Progressbar.show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Admin_Login_Progressbar.cancel();
+                            }
+                        },1000);
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    }
+                }
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Toast.makeText(Admin_Login.this, "failed "+t, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }

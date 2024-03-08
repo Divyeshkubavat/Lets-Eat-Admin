@@ -16,9 +16,16 @@ import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.letseatadmin.Models.Admin;
+import com.example.letseatadmin.Retrofit.AdminApi;
+import com.example.letseatadmin.Retrofit.RetrofitServices;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Admin_UID_Verify extends AppCompatActivity {
 
@@ -27,8 +34,13 @@ public class Admin_UID_Verify extends AppCompatActivity {
     TextInputEditText Admin_Verify_ID,Admin_Verify_DOB;
     Button Admin_Verify_Button;
     private ProgressDialog Admin_UID_Verify_Progressbar;
+    String Admin_Check_ID;
 
     boolean isCheck = false;
+
+    RetrofitServices retrofitServices;
+    AdminApi adminApi;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +55,12 @@ public class Admin_UID_Verify extends AppCompatActivity {
         Admin_Verify_DOB = findViewById(R.id.Admin_Verify_DOB);
         Admin_Verify_Button=findViewById(R.id.Admin_Verify_Button);
 
+        retrofitServices = new RetrofitServices();
+        adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
+
         SharedPreferences Admin_id = getSharedPreferences("Admin_Registration_Check_UID",MODE_PRIVATE);
-        String Admin_Check_ID = Admin_id.getString("Admin_check_UID","");
+        Admin_Check_ID = Admin_id.getString("Admin_check_UID","");
+
         Admin_Verify_DOB.setFocusable(false);
         Admin_Verify_DOB.setClickable(true);
         Admin_Verify_DOB.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +95,7 @@ public class Admin_UID_Verify extends AppCompatActivity {
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                sendData();
                             }
                         },2000);
                     }
@@ -109,4 +125,45 @@ public class Admin_UID_Verify extends AppCompatActivity {
         }
         return true;
     }
+    public void sendData()
+    {
+        String Admin_Name,Admin_Pass,Admin_Mobile,Admin_Email,Admin_Uid,Admin_DOB;
+        Intent intent = getIntent();
+        Admin_Name = intent.getStringExtra("Admin_Name");
+        Admin_Email = intent.getStringExtra("Admin_Email");
+        Admin_Pass = intent.getStringExtra("Admin_Pass");
+        Admin_Mobile = intent.getStringExtra("Admin_Mobile");
+        Admin_Uid = Admin_Verify_ID.getText().toString();
+        Admin_DOB = Admin_Verify_DOB.getText().toString();
+
+        isCheck = check();
+        if(isCheck)
+        {
+            Admin admin = new Admin();
+            admin.setAdminUId(Admin_Uid);
+            admin.setEmail(Admin_Email);
+            admin.setName(Admin_Name);
+            admin.setPassword(Admin_Pass);
+            admin.setMobileNo(Long.parseLong(Admin_Mobile));
+            admin.setDateOfBirth(Admin_DOB);
+            adminApi.save(admin).enqueue(new Callback<Admin>() {
+                @Override
+                public void onResponse(Call<Admin> call, Response<Admin> response) {
+                    Toast.makeText(Admin_UID_Verify.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), Admin_Login.class));
+                }
+                @Override
+                public void onFailure(Call<Admin> call, Throwable t) {
+                    Toast.makeText(Admin_UID_Verify.this, "Sorry ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Admin_UID_Verify.this, t.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }else
+        {
+            Toast.makeText(this, "Fill All The Field", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 }

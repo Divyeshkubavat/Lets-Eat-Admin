@@ -86,10 +86,13 @@ public class Admin_Registration extends AppCompatActivity {
                                             editor.putString("Admin_check_UID",Admin_New_UID);
                                             editor.apply();
                                             editor.commit();
-                                            startActivity(new Intent(getApplicationContext(),Admin_UID_Verify.class));
+                                            Intent intent = new Intent(getApplicationContext(), Admin_UID_Verify.class);
+                                            intent.putExtra("Admin_Name",Admin_Registration_Fullname.getText().toString());
+                                            intent.putExtra("Admin_Pass",Admin_Registration_Pass.getText().toString());
+                                            intent.putExtra("Admin_Email",Admin_Registration_Email.getText().toString());
+                                            intent.putExtra("Admin_Mobile",Admin_Registration_Mobile.getText().toString());
+                                            startActivity(intent);
                                         }
-
-
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -170,7 +173,6 @@ public class Admin_Registration extends AppCompatActivity {
 
         // creates a new e-mail message
         Message msg = new MimeMessage(session);
-
         msg.setFrom(new InternetAddress(userName));
         InternetAddress[] toAddresses = { new InternetAddress(toAddress) };
         msg.setRecipients(Message.RecipientType.TO, toAddresses);

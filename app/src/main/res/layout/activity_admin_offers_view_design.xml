@@ -9,43 +9,55 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_3sdp"
+        android:backgroundTint="@color/white"
+        android:layout_marginLeft="@dimen/_3sdp"
         android:elevation="@dimen/_20sdp"
-        app:cardCornerRadius="@dimen/_20sdp">
+        android:layout_marginTop="@dimen/_3sdp"
+        app:cardCornerRadius="@dimen/_5sdp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <ImageView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:id="@+id/Admin_Offer_Image"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_160sdp"
-                android:src="@drawable/drink"
-                android:id="@+id/Admin_Offer_Image"/>
+                android:layout_height="@dimen/_120sdp"
+                android:src="@drawable/drink" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="@dimen/_5sdp"
                 android:gravity="center_horizontal"
-                android:layout_margin="@dimen/_5sdp">
+                android:orientation="horizontal">
+
                 <Button
+                    android:id="@+id/Admin_Offer_Edit_Button"
                     android:layout_width="@dimen/_130sdp"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/admin_home_button_2"
                     android:backgroundTint="#0A3E25"
                     android:text="EDIT"
-                    android:id="@+id/Admin_Offer_Edit_Button"
-                    android:background="@drawable/admin_home_button_2"
-                    android:textSize="@dimen/_12sdp"/>
+                    android:textSize="@dimen/_10sdp" />
+
                 <View
                     android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_20sdp"/>
+                    android:layout_height="@dimen/_20sdp" />
+
                 <Button
+                    android:id="@+id/Admin_Offer_Delete_Button"
                     android:layout_width="@dimen/_130sdp"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/admin_home_button_2"
                     android:backgroundTint="#0A3E25"
                     android:text="DELETE"
-                    android:id="@+id/Admin_Offer_Delete_Button"
-                    android:background="@drawable/admin_home_button_2"
-                    android:textSize="@dimen/_12sdp"/>
+                    android:textSize="@dimen/_10sdp" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"

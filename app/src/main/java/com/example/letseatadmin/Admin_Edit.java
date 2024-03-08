@@ -3,6 +3,7 @@ package com.example.letseatadmin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -13,15 +14,25 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.example.letseatadmin.Models.Admin;
+import com.example.letseatadmin.Retrofit.AdminApi;
+import com.example.letseatadmin.Retrofit.RetrofitServices;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Admin_Edit extends AppCompatActivity {
     TextInputEditText Admin_Edit_Name,Admin_Edit_Mobile,Admin_Edit_Id,Admin_Edit_Pass,Admin_Edit_DOB,Admin_Edit_Email;
     Button Admin_Edit_Update_Button;
     boolean isCheck=false;
     private DatePickerDialog.OnDateSetListener SetDate;
+    RetrofitServices retrofitServices;
+    AdminApi adminApi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,18 +43,28 @@ public class Admin_Edit extends AppCompatActivity {
         Admin_Edit_Pass=findViewById(R.id.Admin_Edit_Pass);
         Admin_Edit_DOB=findViewById(R.id.Admin_Edit_DOB);
         Admin_Edit_Mobile=findViewById(R.id.Admin_Edit_Mobile);
+        retrofitServices = new RetrofitServices();
+        adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
         Admin_Edit_Update_Button=findViewById(R.id.Admin_Edit_Update_Button);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             Admin_Edit_Id.setFocusable(View.NOT_FOCUSABLE);
         }
+        Admin_Edit_DOB.setFocusable(false);
+        Admin_Edit_DOB.setClickable(false);
+        getAdminData();
+        Admin_Edit_Id.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(Admin_Edit_Id,"Not Changeable",Snackbar.LENGTH_SHORT).show();
+            }
+        });
         Admin_Edit_Update_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 isCheck=check();
                 if(isCheck)
                 {
-                    Toast.makeText(Admin_Edit.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
-                    finish();
+                    updateAdmin();
                 }
             }
         });
@@ -54,7 +75,7 @@ public class Admin_Edit extends AppCompatActivity {
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dialog = new DatePickerDialog(getApplicationContext(), android.R.style.Theme_Holo_Dialog_MinWidth,SetDate,year,month,day);
+                DatePickerDialog dialog = new DatePickerDialog(Admin_Edit.this, android.R.style.Theme_Holo_Dialog_MinWidth,SetDate,year,month,day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
                 dialog.show();
             }
@@ -117,5 +138,64 @@ public class Admin_Edit extends AppCompatActivity {
             return  false;
         }
         return  true;
+    }
+    private void getAdminData()
+    {
+        SharedPreferences preferences = getSharedPreferences("Login",MODE_PRIVATE);
+        String uid = preferences.getString("Login_UID","");
+        adminApi.getSingleUser(uid).enqueue(new Callback<Admin>() {
+            @Override
+            public void onResponse(Call<Admin> call, Response<Admin> response) {
+                String id = response.body().getAdminUId();
+                String dob = response.body().getDateOfBirth();
+                String email = response.body().getEmail();
+                String mobile = String.valueOf(response.body().getMobileNo());
+                String name = response.body().getName();
+                String pass = response.body().getPassword();
+
+                Admin_Edit_Id.setText(id);
+                Admin_Edit_Email.setText(email);
+                Admin_Edit_Mobile.setText(mobile);
+                Admin_Edit_Name.setText(name);
+                Admin_Edit_DOB.setText(dob);
+                Admin_Edit_Pass.setText(pass);
+            }
+            @Override
+            public void onFailure(Call<Admin> call, Throwable t) {
+            }
+        });
+    }
+    private void updateAdmin()
+    {
+        SharedPreferences preferences = getSharedPreferences("Login",MODE_PRIVATE);
+        String uid = preferences.getString("Login_UID","");
+        String name,pass,mobile,email,date;
+        email=Admin_Edit_Email.getText().toString();
+        mobile=Admin_Edit_Mobile.getText().toString();
+        name=Admin_Edit_Name.getText().toString();
+        date=Admin_Edit_DOB.getText().toString();
+        pass=Admin_Edit_Pass.getText().toString();
+
+        Admin admin = new Admin();
+        admin.setDateOfBirth(date);
+        admin.setPassword(pass);
+        admin.setName(name);
+        admin.setMobileNo(Long.parseLong(mobile));
+        admin.setEmail(email);
+
+        adminApi.updateAdmin(uid,admin).enqueue(new Callback<Admin>() {
+            @Override
+            public void onResponse(Call<Admin> call, Response<Admin> response) {
+                Toast.makeText(Admin_Edit.this, "Profile Updated Successful", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<Admin> call, Throwable t) {
+
+            }
+        });
+
+
     }
 }

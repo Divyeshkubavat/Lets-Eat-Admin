@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_20sdp"
-    android:layout_gravity="start"
-    tools:context=".Admin_Offer_Add">
+    android:layout_height="match_parent"
+    tools:context=".Admin_Offer_Edit">
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -27,7 +27,7 @@
                     android:layout_marginTop="@dimen/_40sdp"/>
 
                 <ImageView
-                    android:id="@+id/Admin_Offer_Add_Image"
+                    android:id="@+id/Admin_Offer_Edit_Image"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_120sdp"
                     android:layout_gravity="center_horizontal"
@@ -36,6 +36,7 @@
                     android:src="@drawable/upload_image"
                     app:civ_border_color="@color/app"
                     app:civ_border_width="@dimen/_2sdp"
+                    android:background="@drawable/image_border"
                     android:layout_marginLeft="@dimen/_3sdp"
                     android:layout_marginRight="@dimen/_3sdp"/>
 
@@ -82,7 +83,7 @@
                         <RadioButton
                             android:layout_width="@dimen/_65sdp"
                             android:layout_height="@dimen/_65sdp"
-                            android:id="@+id/Admin_Offer_Add_Burger_Radio"
+                            android:id="@+id/Admin_Offer_Edit_Burger_Radio"
                             android:textSize="@dimen/_16sdp"
                             android:text="201"
                             android:button="@android:color/transparent"
@@ -97,7 +98,7 @@
                             android:layout_marginLeft="@dimen/_12sdp"
                             android:textSize="@dimen/_16sdp"
                             android:text="202"
-                            android:id="@+id/Admin_Offer_Add_Pizza_Radio"
+                            android:id="@+id/Admin_Offer_Edit_Pizza_Radio"
                             android:foreground="@drawable/pizza"
                             android:button="@android:color/transparent"
                             android:background="@drawable/radio_selector"
@@ -110,7 +111,7 @@
                             android:layout_marginLeft="@dimen/_12sdp"
                             android:textSize="@dimen/_16sdp"
                             android:text="203"
-                            android:id="@+id/Admin_Offer_Add_Combo_Radio"
+                            android:id="@+id/Admin_Offer_Edit_Combo_Radio"
                             android:foreground="@drawable/combo"
                             android:button="@android:color/transparent"
                             android:background="@drawable/radio_selector"
@@ -123,7 +124,7 @@
                             android:layout_marginLeft="@dimen/_12sdp"
                             android:textSize="@dimen/_16sdp"
                             android:text="204"
-                            android:id="@+id/Admin_Offer_Add_Drink_Radio"
+                            android:id="@+id/Admin_Offer_Edit_Drink_Radio"
                             android:foreground="@drawable/drink"
                             android:button="@android:color/transparent"
                             android:background="@drawable/radio_selector"
@@ -135,7 +136,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
-                    android:id="@+id/Admin_Offer_Add_Button"
+                    android:id="@+id/Admin_Offer_Update_Button"
                     android:text="ADD"
                     android:textSize="@dimen/_14sdp"
                     android:layout_marginTop="@dimen/_40sdp"
@@ -147,4 +148,4 @@
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
