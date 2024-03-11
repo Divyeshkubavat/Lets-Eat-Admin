@@ -161,4 +161,9 @@ public interface AdminApi {
     Call<List<Order>> getOrderByState(
             @Query("state")  int state
     );
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/orders/get-by-delivery-boy-id")
+    Call<List<Order>> getOrderByDeliveryBoyId(
+            @Query("deliveryId") int id
+    );
 }

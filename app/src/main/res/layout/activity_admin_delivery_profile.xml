@@ -223,7 +223,6 @@
                             android:id="@+id/Admin_Delivery_Profile_Recyclerview"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:visibility="gone"
                             tools:listitem="@layout/activity_admin_delivery_history_design"/>
 
                     </LinearLayout>

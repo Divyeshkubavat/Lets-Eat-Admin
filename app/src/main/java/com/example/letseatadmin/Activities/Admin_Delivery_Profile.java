@@ -18,12 +18,14 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.letseatadmin.Adapter.Delivery_History_Adapter;
 import com.example.letseatadmin.Models.Delivery_history_Item;
+import com.example.letseatadmin.Models.Order;
 import com.example.letseatadmin.Models.deliveryBoy;
 import com.example.letseatadmin.R;
 import com.example.letseatadmin.Retrofit.AdminApi;
 import com.example.letseatadmin.Retrofit.RetrofitServices;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -34,9 +36,7 @@ public class Admin_Delivery_Profile extends AppCompatActivity {
 
     RecyclerView Admin_Delivery_History_recyclerview;
     CircleImageView Admin_Delivery_Profile_Image;
-
     Button Admin_Delivery_Profile_Edit_Button;
-
     TextView Admin_Delivery_Profile_History_Button,Admin_Delivery_Profile_History_Button_2;
     TextView Admin_Delivery_Profile_Name,Admin_Delivery_Profile_Email,Admin_Delivery_Profile_Mobile,Admin_Delivery_Profile_Salary;
     int id;
@@ -44,6 +44,8 @@ public class Admin_Delivery_Profile extends AppCompatActivity {
     AdminApi adminApi;
     String image;
     String name,email,mobile,salary,pass;
+    Delivery_History_Adapter adapter;
+    ArrayList<Order> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,8 @@ public class Admin_Delivery_Profile extends AppCompatActivity {
         Admin_Delivery_Profile_Salary=findViewById(R.id.Admin_Delivery_Profile_Salary);
         Admin_Delivery_Profile_Edit_Button=findViewById(R.id.Admin_Delivery_Profile_Edit_Button);
         Admin_Delivery_Profile_Image=findViewById(R.id.Admin_Delivery_Profile_Image);
+        Admin_Delivery_History_recyclerview=findViewById(R.id.Admin_Delivery_Profile_Recyclerview);
+        list=new ArrayList<>();
         retrofitServices = new RetrofitServices();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
         setData();
@@ -74,42 +78,19 @@ public class Admin_Delivery_Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        Admin_Delivery_Profile_History_Button_2.setOnClickListener(new View.OnClickListener() {
+        adminApi.getOrderByDeliveryBoyId(id).enqueue(new Callback<List<Order>>() {
             @Override
-            public void onClick(View view) {
-                    if(Admin_Delivery_History_recyclerview.getVisibility() == View.VISIBLE)
-                    {
-                        Admin_Delivery_History_recyclerview.setVisibility(View.GONE);
-                        Admin_Delivery_Profile_History_Button_2.setCompoundDrawablesWithIntrinsicBounds(0,0,0,0);
-                        Admin_Delivery_Profile_History_Button_2.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.baseline_arrow_downward_24));
-
-                    }
-                    else {
-                        Admin_Delivery_Profile_History_Button_2.setCompoundDrawablesWithIntrinsicBounds(0,0,0,0);
-                        Admin_Delivery_Profile_History_Button_2.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.baseline_arrow_upward_24));
-
-                        Admin_Delivery_History_recyclerview.setVisibility(View.VISIBLE);
-                    }
-
+            public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
+                list= (ArrayList<Order>) response.body();
+                adapter=new Delivery_History_Adapter(list,Admin_Delivery_Profile.this);
+                Admin_Delivery_History_recyclerview.setLayoutManager(new LinearLayoutManager(Admin_Delivery_Profile.this,LinearLayoutManager.VERTICAL,false));
+                adapter.notifyDataSetChanged();
+                Admin_Delivery_History_recyclerview.setAdapter(adapter);
             }
-        });
-        Admin_Delivery_Profile_History_Button.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View view) {
-                if(Admin_Delivery_History_recyclerview.getVisibility() == View.VISIBLE)
-                {
-                    Admin_Delivery_History_recyclerview.setVisibility(View.GONE);
-                    Admin_Delivery_Profile_History_Button_2.setCompoundDrawablesWithIntrinsicBounds(0,0,0,0);
-                    Admin_Delivery_Profile_History_Button_2.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.baseline_arrow_downward_24));
+            public void onFailure(Call<List<Order>> call, Throwable t) {
 
-                }
-                else {
-                    Admin_Delivery_Profile_History_Button_2.setCompoundDrawablesWithIntrinsicBounds(0,0,0,0);
-                    Admin_Delivery_Profile_History_Button_2.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.baseline_arrow_upward_24));
-                    Admin_Delivery_History_recyclerview.setVisibility(View.VISIBLE);
-
-                }
             }
         });
     }

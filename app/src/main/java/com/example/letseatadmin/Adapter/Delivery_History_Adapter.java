@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.letseatadmin.Models.Delivery_history_Item;
+import com.example.letseatadmin.Models.Order;
 import com.example.letseatadmin.R;
 
 import java.util.ArrayList;
@@ -22,9 +23,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Delivery_History_Adapter extends RecyclerView.Adapter<MyViewHolder>
 {
-    ArrayList<Delivery_history_Item> list;
+    ArrayList<Order> list;
     Context context;
-    public Delivery_History_Adapter(ArrayList<Delivery_history_Item> list, Context context) {
+    public Delivery_History_Adapter(ArrayList<Order> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -39,11 +40,10 @@ public class Delivery_History_Adapter extends RecyclerView.Adapter<MyViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.Order_ID.setText(list.get(position).getOrder_ID());
-        holder.Status.setText(list.get(position).getStatus());
+        final Order o = list.get(position);
+        holder.Status.setText(o.getState());
+        holder.Order_ID.setText(String.valueOf(o.getId()));
     }
-
-
     @Override
     public int getItemCount() {
         return list.size();
