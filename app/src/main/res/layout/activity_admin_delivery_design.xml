@@ -9,15 +9,16 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginLeft="@dimen/_3sdp"
+        android:layout_marginRight="@dimen/_3sdp"
+        android:layout_marginBottom="@dimen/_1sdp"
         app:cardElevation="@dimen/_10sdp"
         app:cardCornerRadius="@dimen/_2sdp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/Admin_Delivery_Image"
                 android:layout_width="@dimen/_65sdp"
@@ -61,7 +62,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Admin_Staff_Mobile"
+                        android:id="@+id/Admin_Delivery_Mobile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/Admin_Delivery_Name"

@@ -73,7 +73,10 @@
                         android:layout_width="@dimen/_136sdp"
                         android:layout_height="@dimen/_136sdp"
                         android:layout_marginTop="@dimen/_40sdp"
+                        app:civ_border_color="@color/app"
+                        app:civ_border_width="@dimen/_2sdp"
                         android:src="@drawable/avatar"
+                        android:padding="@dimen/_5sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -97,23 +100,10 @@
                             android:orientation="horizontal"
                             android:gravity="center_horizontal">
                             <Button
-                                android:id="@+id/Admin_Delivery_Pofile_Edit_Button"
+                                android:id="@+id/Admin_Delivery_Profile_Edit_Button"
                                 android:layout_width="@dimen/_100sdp"
                                 android:layout_height="@dimen/_70sdp"
                                 android:text="EDIT"
-                                android:layout_margin="@dimen/_10sdp"
-                                android:background="@drawable/admin_home_button_2" />
-                            <View
-                                android:layout_width="@dimen/_1sdp"
-                                android:layout_height="@dimen/_70sdp"
-                                android:layout_margin="@dimen/_10sdp"
-                                android:background="@color/black"/>
-
-                            <Button
-                                android:id="@+id/Admin_Delivery_Profile_Delete_Button"
-                                android:layout_width="@dimen/_100sdp"
-                                android:layout_height="@dimen/_70sdp"
-                                android:text="DELETE"
                                 android:layout_margin="@dimen/_10sdp"
                                 android:background="@drawable/admin_home_button_2" />
                         </LinearLayout>

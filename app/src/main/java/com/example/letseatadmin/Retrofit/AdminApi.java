@@ -2,6 +2,8 @@ package com.example.letseatadmin.Retrofit;
 
 import com.example.letseatadmin.Models.Admin;
 import com.example.letseatadmin.Models.Offer;
+import com.example.letseatadmin.Models.Order;
+import com.example.letseatadmin.Models.Payment;
 import com.example.letseatadmin.Models.Product;
 import com.example.letseatadmin.Models.Staff;
 import com.example.letseatadmin.Models.adminLogin;
@@ -107,11 +109,56 @@ public interface AdminApi {
             @Query("deliveryBoyId") int id
     );
 
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/product/category-wise-search")
+    Call<List<Product>> searchProduct(
+            @Query("keyword") String key,@Query("categoryId") int id
+    );
+
     @PUT("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/delivery-boy/update")
     Call<deliveryBoy> updateDeliveryBoy(
             @Query("deliveryBoyId") int id,@Body deliveryBoy boy
     );
 
     @DELETE("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/delivery-boy/delete")
-    Call<String> deleteDeliveryBoy();
+    Call<String> deleteDeliveryBoy(
+            @Query("deliveryBoyId") int id
+    );
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/orders/get-all")
+    Call<List<Order>> getAllOrder();
+
+    @PUT("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/orders/update")
+    Call<Order> updateOrder(
+            @Query("orderId") int id,@Body Order order
+    );
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/product/get")
+    Call<Product> getProductById(
+            @Query("productId") int id
+    );
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/orders/get")
+    Call<Order> getSingleOrder(
+            @Query("orderId") int id
+    );
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/payment/get-all-users-total")
+    Call<Double> getTotalPayment();
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/payment/get-all-users-total")
+    Call<Double> getTotalPaymentByStatus(
+            @Query("status") String status
+    );
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/payment/get-all")
+    Call<List<Payment>> getAllPayment();
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/payment/get-all")
+    Call<List<Payment>> getPaymentByStatus(
+            @Query("status") String s
+    );
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/orders/get-by-state")
+    Call<List<Order>> getOrderByState(
+            @Query("state")  int state
+    );
 }

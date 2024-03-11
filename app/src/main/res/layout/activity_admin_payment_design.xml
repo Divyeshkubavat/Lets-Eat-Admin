@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Activities.Admin_Payment_Design">
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
         <TableRow
             android:layout_height="wrap_content"
             android:weightSum="5"
@@ -20,6 +21,7 @@
                 android:layout_height="wrap_content"
                 android:text="Order ID"
                 android:textSize="@dimen/_15sdp"
+
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:textColor="@color/app"/>

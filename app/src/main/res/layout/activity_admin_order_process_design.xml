@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Activities.Admin_Order_Design">
+    tools:context=".Activities.Admin_Order_Process_Design">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,18 +20,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/Admin_Order_Design_Imageview"
+                    android:id="@+id/Admin_Order_Process_Design_Imageview"
                     android:layout_width="@dimen/_60sdp"
                     android:layout_height="@dimen/_60sdp"
                     android:src="@drawable/logo"
                     android:background="@color/white"
-                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_margin="@dimen/_5sdp"
                     app:civ_border_color="@color/app"
                     app:civ_border_width="@dimen/_2sdp" />
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/_5sdp"
                     android:layout_gravity="center_vertical">
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -44,15 +45,13 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/_11sdp"/>
                         <TextView
-                            android:id="@+id/Admin_Order_Design_Order_Id"
+                            android:id="@+id/Admin_Order_Process_Design_Order_Id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
                             android:textColor="#D32F2F"
                             android:textSize="@dimen/_11sdp"/>
                     </LinearLayout>
-
-
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -64,48 +63,13 @@
                             android:textColor="@color/app"
                             android:textSize="@dimen/_11sdp"/>
                         <TextView
-                            android:id="@+id/Admin_Order_Design_Total"
+                            android:id="@+id/Admin_Order_Process_Design_Total"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
                             android:textColor="@color/app"
                             android:textSize="@dimen/_11sdp"/>
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Add :-"
-                            android:textColor="@color/app"
-                            android:textSize="@dimen/_11sdp"/>
-                        <TextView
-                            android:id="@+id/Admin_Order_Design_Address"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="B-402,Gangapark App"
-                            android:textColor="@color/app"
-                            android:textSize="@dimen/_11sdp"/>
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/Admin_Order_Design_Detail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:text="See Detail"
-                        android:textSize="@dimen/_12sdp"
-                        android:textColor="#D32F2F"
-                        android:textStyle="normal"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -115,13 +79,24 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:layout_marginBottom="@dimen/_5sdp">
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/Admin_Order_Design_Approvebutton"
+                    android:id="@+id/Admin_Order_Design_Processbtn"
                     android:layout_width="@dimen/_110sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:backgroundTint="@color/green"
                     app:cornerRadius="@dimen/_10sdp"
                     android:drawableLeft="@drawable/baseline_done_24"
-                    android:text="Approve"
+                    android:text="Process"
+                    android:textColor="@color/app"/>
+                <View
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="0dp"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/Admin_Order_Design_Process_SeeDetail"
+                    android:layout_width="@dimen/_110sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:backgroundTint="#D32F2F"
+                    app:cornerRadius="@dimen/_10sdp"
+                    android:text="See Detail"
                     android:textColor="@color/app"/>
             </LinearLayout>
         </LinearLayout>

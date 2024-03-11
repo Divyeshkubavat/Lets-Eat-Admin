@@ -25,6 +25,5 @@
             app:labelVisibilityMode="unlabeled"
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_20sdp"
-            app:menu="@menu/item_menu"
-            tools:ignore="MissingConstraints"/>
+            app:menu="@menu/item_menu" />
 </RelativeLayout>

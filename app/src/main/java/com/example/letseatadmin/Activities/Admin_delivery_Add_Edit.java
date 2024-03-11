@@ -56,8 +56,9 @@ public class Admin_delivery_Add_Edit extends AppCompatActivity {
         Admin_Delivery_Salary=findViewById(R.id.Admin_Delivery_Add_Salary);
         Admin_Delivery_Mobile=findViewById(R.id.Admin_Delivery_Add_Mobile);
         Admin_Delivery_Pass=findViewById(R.id.Admin_Delivery_Add_Password);
-        adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
         retrofitServices = new RetrofitServices();
+        adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
+
         Admin_Delivery_Image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,7 +122,7 @@ public class Admin_delivery_Add_Edit extends AppCompatActivity {
     }
     private void setDeliveryBoy(){
         pg.setTitle("Loading..... ");
-        pg.setMessage("Adding Product ... ");
+        pg.setMessage("Adding Delivery Boy ... ");
         pg.setCanceledOnTouchOutside(false);
         pg.show();
         getData();

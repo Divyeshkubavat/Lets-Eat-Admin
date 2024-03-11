@@ -166,7 +166,7 @@
                         android:layout_marginTop="@dimen/_24sdp"
                         android:background="@drawable/shape_button"
                         android:backgroundTint="#281818"
-                        android:text="Update"
+                        android:text="ADD"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>

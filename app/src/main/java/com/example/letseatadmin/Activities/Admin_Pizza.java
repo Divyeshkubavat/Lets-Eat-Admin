@@ -48,6 +48,19 @@ public class Admin_Pizza extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), Admin_Product_Add.class));
             }
         });
+        Admin_Pizza_Searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                search(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                search(newText);
+                return false;
+            }
+        });
     }
     private void setProduct()
     {
@@ -67,7 +80,23 @@ public class Admin_Pizza extends AppCompatActivity {
             }
         });
     }
+    private void search(String key)
+    {
+        adminApi.searchProduct(key,202).enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                list = (ArrayList<Product>) response.body();
+                productAdapter = new productAdapter(list,Admin_Pizza.this);
+                Admin_Pizza_Recyclerview.setLayoutManager(new LinearLayoutManager(Admin_Pizza.this,LinearLayoutManager.VERTICAL,false));
+                productAdapter.notifyDataSetChanged();
+                Admin_Pizza_Recyclerview.setAdapter(productAdapter);
+            }
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
 
+            }
+        });
+    }
     @Override
     protected void onResume() {
         super.onResume();

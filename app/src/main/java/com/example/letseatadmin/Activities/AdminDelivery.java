@@ -4,60 +4,49 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.letseatadmin.Adapter.deliveryBoyAdapter;
+import com.example.letseatadmin.Adapter.staffAdapter;
+import com.example.letseatadmin.Models.Staff;
+import com.example.letseatadmin.Models.deliveryBoy;
 import com.example.letseatadmin.R;
+import com.example.letseatadmin.Retrofit.AdminApi;
+import com.example.letseatadmin.Retrofit.RetrofitServices;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AdminDelivery#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AdminDelivery extends Fragment {
 
     FloatingActionButton Admin_Delivery_Add_FloatButton;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public AdminDelivery() {
-        // Required empty public constructor
-    }
-    // TODO: Rename and change types and number of parameters
-    public static AdminDelivery newInstance(String param1, String param2) {
-        AdminDelivery fragment = new AdminDelivery();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    RecyclerView Admin_Delivery_Recyclerview;
+    RetrofitServices retrofitServices;
+    AdminApi adminApi;
+    ArrayList<deliveryBoy> deliveryBoysList;
+    deliveryBoyAdapter deliveryAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_admin_delivery, container, false);
         Admin_Delivery_Add_FloatButton = view.findViewById(R.id.Admin_Delivery_ADD_FloatButton);
+        Admin_Delivery_Recyclerview=view.findViewById(R.id.Admin_Delivery_Recyclerview);
+        retrofitServices = new RetrofitServices();
+        adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
+        deliveryBoysList=new ArrayList<>();
+        setData();
         Admin_Delivery_Add_FloatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,5 +54,33 @@ public class AdminDelivery extends Fragment {
             }
         });
         return view;
+    }
+    private  void setData(){
+        adminApi.getAllDeliveryBoy().enqueue(new Callback<List<deliveryBoy>>() {
+            @Override
+            public void onResponse(Call<List<deliveryBoy>> call, Response<List<deliveryBoy>> response) {
+                deliveryBoysList= (ArrayList<deliveryBoy>) response.body();
+                deliveryAdapter = new deliveryBoyAdapter(deliveryBoysList,getContext());
+                Admin_Delivery_Recyclerview.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+                deliveryAdapter.notifyDataSetChanged();
+                Admin_Delivery_Recyclerview.setAdapter(deliveryAdapter);
+            }
+            @Override
+            public void onFailure(Call<List<deliveryBoy>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setData();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        setData();
     }
 }

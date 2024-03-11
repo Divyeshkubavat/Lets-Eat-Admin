@@ -42,16 +42,45 @@ public class Admin_Burger extends AppCompatActivity {
         retrofitServices = new RetrofitServices();
         list = new ArrayList<>();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
-        setProduct();
+        setData();
         Admin_Burger_Add_FloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Admin_Product_Add.class));
             }
         });
+        Admin_Burger_Searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                search(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                search(newText);
+                return false;
+            }
+        });
     }
-    private void setProduct()
+    private void search(String key)
     {
+        adminApi.searchProduct(key,201).enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                list = (ArrayList<Product>) response.body();
+                productAdapter = new productAdapter(list,Admin_Burger.this);
+                Admin_Burger_Recyclerview.setLayoutManager(new LinearLayoutManager(Admin_Burger.this,LinearLayoutManager.VERTICAL,false));
+                productAdapter.notifyDataSetChanged();
+                Admin_Burger_Recyclerview.setAdapter(productAdapter);
+            }
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+
+            }
+        });
+    }
+    private void setData(){
         adminApi.getSingleProduct(201).enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
@@ -60,6 +89,7 @@ public class Admin_Burger extends AppCompatActivity {
                 Admin_Burger_Recyclerview.setLayoutManager(new LinearLayoutManager(Admin_Burger.this,LinearLayoutManager.VERTICAL,false));
                 productAdapter.notifyDataSetChanged();
                 Admin_Burger_Recyclerview.setAdapter(productAdapter);
+
             }
 
             @Override
@@ -72,6 +102,6 @@ public class Admin_Burger extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setProduct();
+        setData();
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activities.Admin_Drink">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/s2">
@@ -64,7 +64,7 @@
                     tools:listitem="@layout/activity_admin_product_view_design"/>
             </ScrollView>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

@@ -25,6 +25,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.Admin_Order_Complete_Design"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Admin_Order_Compete"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Admin_Order_Process_Design"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Admin_Order_Process"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Admin_Order_Display"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Admin_Order_See_Detail"
+            android:exported="false" />
+        <activity
             android:name=".Activities.Admin_Delivery_Edit"
             android:exported="false" />
         <activity

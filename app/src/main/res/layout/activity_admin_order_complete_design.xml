@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".Activities.Admin_Order_Design">
+    android:layout_height="match_parent"
+    tools:context=".Activities.Admin_Order_Complete_Design">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/_11sdp"/>
                         <TextView
-                            android:id="@+id/Admin_Order_Design_Order_Id"
+                            android:id="@+id/Admin_Order_Complete_Design_Order_Id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
@@ -64,7 +64,7 @@
                             android:textColor="@color/app"
                             android:textSize="@dimen/_11sdp"/>
                         <TextView
-                            android:id="@+id/Admin_Order_Design_Total"
+                            android:id="@+id/Admin_Order_Complete_Design_Total"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
@@ -82,7 +82,7 @@
                             android:textColor="@color/app"
                             android:textSize="@dimen/_11sdp"/>
                         <TextView
-                            android:id="@+id/Admin_Order_Design_Address"
+                            android:id="@+id/Admin_Order_Complete_Design_Address"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="B-402,Gangapark App"
@@ -95,10 +95,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_20sdp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
 
                     <TextView
-                        android:id="@+id/Admin_Order_Design_Detail"
+                        android:id="@+id/Admin_Order_Complete_Design_Detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
@@ -107,22 +108,6 @@
                         android:textColor="#D32F2F"
                         android:textStyle="normal"/>
                 </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal|center_vertical"
-                android:layout_marginBottom="@dimen/_5sdp">
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/Admin_Order_Design_Approvebutton"
-                    android:layout_width="@dimen/_110sdp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:backgroundTint="@color/green"
-                    app:cornerRadius="@dimen/_10sdp"
-                    android:drawableLeft="@drawable/baseline_done_24"
-                    android:text="Approve"
-                    android:textColor="@color/app"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

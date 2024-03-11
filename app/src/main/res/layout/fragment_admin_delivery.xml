@@ -7,7 +7,7 @@
     android:background="@color/white"
     tools:context=".Activities.AdminDelivery">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -36,15 +36,19 @@
                 android:background="@drawable/search_design"
                 android:textAppearance="@color/white"
                 app:queryHint="Search here ...."/>
-            <androidx.recyclerview.widget.RecyclerView
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:id="@+id/Admin_Staff_Recyclerview"
-                tools:listitem="@layout/activity_admin_delivery_design">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="match_parent">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:id="@+id/Admin_Delivery_Recyclerview"
+                    tools:listitem="@layout/activity_admin_delivery_design">
+                </androidx.recyclerview.widget.RecyclerView>
+            </ScrollView>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
