@@ -1,11 +1,17 @@
 package com.example.letseatadmin.Activities;
 
+import static com.example.letseatadmin.Activities.MainActivity.listener;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
@@ -31,6 +37,7 @@ public class Admin_Offer extends AppCompatActivity {
     RetrofitServices retrofitServices;
     AdminApi adminApi;
     ArrayList<Offer> offerArrayList;
+    ProgressDialog pg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +48,19 @@ public class Admin_Offer extends AppCompatActivity {
         retrofitServices = new RetrofitServices();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
         offerArrayList = new ArrayList<>();
+        pg = new ProgressDialog(this);
+        pg.setTitle("Loading..... ");
+        pg.setMessage("Please wait Deleting Order ....");
+        pg.setCanceledOnTouchOutside(false);
+        pg.show();
         loadData();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pg.dismiss();
+            }
+        },500);
+
         Admin_Offer_Add_FloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +88,8 @@ public class Admin_Offer extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(listener,filter);
         super.onStart();
         loadData();
     }
@@ -79,5 +100,11 @@ public class Admin_Offer extends AppCompatActivity {
         loadData();
     }
 
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(listener);
+        super.onStop();
+    }
 
 }

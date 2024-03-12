@@ -1,7 +1,9 @@
 package com.example.letseatadmin.Adapter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,10 +68,18 @@ public class ProcessAdapter extends RecyclerView.Adapter<ProcessAdapter.MyViewHo
             public void onClick(View view) {
                 Order o1 = new Order();
                 o1.setState(3);
+                ProgressDialog pg;
+                pg = new ProgressDialog(view.getContext());
+                pg.setTitle("Loading..... ");
+                pg.setMessage("Please wait Accept Oder  ....");
+                pg.setCanceledOnTouchOutside(false);
+                pg.show();
                 adminApi.updateOrder(o.getId(),o1).enqueue(new Callback<Order>() {
                     @Override
                     public void onResponse(Call<Order> call, Response<Order> response) {
+
                         Toast.makeText(context, "Processed Successfully", Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override
@@ -80,6 +90,12 @@ public class ProcessAdapter extends RecyclerView.Adapter<ProcessAdapter.MyViewHo
                 list.remove(position);
                 notifyItemRemoved(position);
                 notifyDataSetChanged();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pg.dismiss();
+                    }
+                },2000);
             }
         });
 

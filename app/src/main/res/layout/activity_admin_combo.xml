@@ -30,23 +30,17 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/_10sdp">
                 <androidx.appcompat.widget.SearchView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
                     android:hint="Search here"
                     android:id="@+id/Admin_Combo_Searchbar"
                     app:iconifiedByDefault="false"
                     android:layout_marginLeft="@dimen/_12sdp"
+                    android:layout_marginRight="@dimen/_12sdp"
                     android:background="@drawable/search_design"
                     android:textAppearance="@color/white"
                     app:queryHint="Search here ...." />
-                <ImageView
-                    android:id="@+id/Admin_Combo_Filter"
-                    android:layout_width="@dimen/_35sdp"
-                    android:layout_height="@dimen/_35sdp"
-                    android:src="@drawable/filter"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_alignParentEnd="true"
-                    app:tint="@color/app" />
+
             </LinearLayout>
             <ScrollView
                 android:layout_width="match_parent"

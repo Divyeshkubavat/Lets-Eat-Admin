@@ -1,13 +1,17 @@
 package com.example.letseatadmin.Activities;
 
+import static com.example.letseatadmin.Activities.MainActivity.listener;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -165,6 +169,16 @@ public class Admin_UID_Verify extends AppCompatActivity {
             Toast.makeText(this, "Fill All The Field", Toast.LENGTH_SHORT).show();
         }
     }
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(listener,filter);
+        super.onStart();
+    }
 
+    @Override
+    protected void onStop() {
+        unregisterReceiver(listener);
+        super.onStop();
+    }
 
 }

@@ -1,10 +1,14 @@
 package com.example.letseatadmin.Activities;
 
+import static com.example.letseatadmin.Activities.MainActivity.listener;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Patterns;
@@ -227,5 +231,16 @@ public class Admin_Registration extends AppCompatActivity {
                 "Let's Eat\n" +
                 "dkubavat0@gmail.com";
         return Admin_Email_Format;
+    }
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(listener,filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(listener);
+        super.onStop();
     }
 }

@@ -29,7 +29,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/_10sdp">
                 <androidx.appcompat.widget.SearchView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
                     android:hint="Search here"
                     android:id="@+id/Admin_Pizza_Searchbar"
@@ -37,15 +37,8 @@
                     android:layout_marginLeft="@dimen/_12sdp"
                     android:background="@drawable/search_design"
                     android:textAppearance="@color/white"
+                    android:layout_marginRight="@dimen/_12sdp"
                     app:queryHint="Search here ...." />
-                <ImageView
-                    android:id="@+id/Admin_burger_Filter"
-                    android:layout_width="@dimen/_35sdp"
-                    android:layout_height="@dimen/_35sdp"
-                    android:src="@drawable/filter"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_alignParentEnd="true"
-                    app:tint="@color/app" />
             </LinearLayout>
             <ScrollView
                 android:layout_width="match_parent"

@@ -1,5 +1,7 @@
 package com.example.letseatadmin.Activities;
 
+import static com.example.letseatadmin.Activities.MainActivity.listener;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompatSideChannelService;
 import androidx.core.content.ContextCompat;
@@ -7,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -134,7 +138,15 @@ public class Admin_Delivery_Profile extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(listener,filter);
         super.onStart();
         set();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(listener);
+        super.onStop();
     }
 }

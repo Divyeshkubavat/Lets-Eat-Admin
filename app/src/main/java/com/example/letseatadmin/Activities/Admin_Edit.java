@@ -1,11 +1,15 @@
 package com.example.letseatadmin.Activities;
 
+import static com.example.letseatadmin.Activities.MainActivity.listener;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -196,7 +200,16 @@ public class Admin_Edit extends AppCompatActivity {
 
             }
         });
+    }
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(listener,filter);
+        super.onStart();
+    }
 
-
+    @Override
+    protected void onStop() {
+        unregisterReceiver(listener);
+        super.onStop();
     }
 }

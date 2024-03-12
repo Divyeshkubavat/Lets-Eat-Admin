@@ -1,5 +1,6 @@
 package com.example.letseatadmin.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,8 @@ public class AdminStaff extends Fragment {
     AdminApi adminApi;
     ArrayList<Staff> staff;
 
+    ProgressDialog pg;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,7 +47,18 @@ public class AdminStaff extends Fragment {
         retrofitServices = new RetrofitServices();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
         staff = new ArrayList<>();
+        pg = new ProgressDialog(getContext());
+        pg.setTitle("Loading..... ");
+        pg.setMessage("Please wait Deleting Order ....");
+        pg.setCanceledOnTouchOutside(false);
+        pg.show();
         setData();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pg.dismiss();
+            }
+        },500);
         Admin_Staff_Add_FloatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

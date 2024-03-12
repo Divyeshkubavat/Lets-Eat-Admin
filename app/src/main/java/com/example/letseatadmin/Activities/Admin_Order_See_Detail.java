@@ -1,11 +1,17 @@
 package com.example.letseatadmin.Activities;
 
+import static com.example.letseatadmin.Activities.MainActivity.listener;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 
 import com.example.letseatadmin.Adapter.OrderProductAdapter;
@@ -32,6 +38,7 @@ public class Admin_Order_See_Detail extends AppCompatActivity {
 
     OrderProductAdapter adapter;
     double total;
+    ProgressDialog pg;
 
 
     @Override
@@ -43,6 +50,18 @@ public class Admin_Order_See_Detail extends AppCompatActivity {
         Admin_Order_See_Order_Total=findViewById(R.id.Admin_Order_See_Order_Total);
         retrofitServices = new RetrofitServices();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
+        pg = new ProgressDialog(this);
+        pg.setTitle("Loading..... ");
+        pg.setMessage("Please wait Deleting Order ....");
+        pg.setCanceledOnTouchOutside(false);
+        pg.show();
+        setData();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pg.dismiss();
+            }
+        },300);
         list=new ArrayList<>();
         setData();
     }
@@ -66,5 +85,16 @@ public class Admin_Order_See_Detail extends AppCompatActivity {
 
             }
         });
+    }
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(listener,filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(listener);
+        super.onStop();
     }
 }

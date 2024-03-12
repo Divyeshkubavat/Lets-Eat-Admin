@@ -1,11 +1,15 @@
 package com.example.letseatadmin.Activities;
 
+import static com.example.letseatadmin.Activities.MainActivity.listener;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -173,5 +177,17 @@ public class Admin_delivery_Add_Edit extends AppCompatActivity {
         email=Admin_Delivery_Email.getText().toString();
         pass=Admin_Delivery_Pass.getText().toString();
         salary= Double.parseDouble(Admin_Delivery_Salary.getText().toString());
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(listener,filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(listener);
+        super.onStop();
     }
 }

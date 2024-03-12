@@ -1,14 +1,20 @@
 package com.example.letseatadmin.Activities;
 
+import static com.example.letseatadmin.Activities.MainActivity.listener;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.letseatadmin.Adapter.OrderAdapter;
 import com.example.letseatadmin.Models.Order;
 import com.example.letseatadmin.R;
@@ -32,6 +38,7 @@ public class Admin_Order_Display extends AppCompatActivity {
 
     OrderAdapter adapter;
     ProgressDialog pg;
+    LottieAnimationView Admin_Order_Display_Lottie;
 
 
     @Override
@@ -39,6 +46,7 @@ public class Admin_Order_Display extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_order_display);
         Admin_Order_Recyclerview=findViewById(R.id.Admin_Order_Recyclerview);
+        Admin_Order_Display_Lottie=findViewById(R.id.Admin_Order_Display_Lottie);
         retrofitServices = new RetrofitServices();
         list = new ArrayList<>();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
@@ -62,8 +70,14 @@ public class Admin_Order_Display extends AppCompatActivity {
                 list= (ArrayList<Order>) response.body();
                 adapter = new OrderAdapter(list,Admin_Order_Display.this);
                 Admin_Order_Recyclerview.setLayoutManager(new LinearLayoutManager(Admin_Order_Display.this,LinearLayoutManager.VERTICAL,false));
-                adapter.notifyDataSetChanged();
-                Admin_Order_Recyclerview.setAdapter(adapter);
+                if(adapter.getItemCount()==0){
+                    Admin_Order_Display_Lottie.setVisibility(View.VISIBLE);
+                }else{
+                    adapter.notifyDataSetChanged();
+                    Admin_Order_Display_Lottie.setVisibility(View.GONE);
+                    Admin_Order_Recyclerview.setAdapter(adapter);
+                }
+
             }
 
             @Override
@@ -71,5 +85,16 @@ public class Admin_Order_Display extends AppCompatActivity {
 
             }
         });
+    }
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(listener,filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(listener);
+        super.onStop();
     }
 }

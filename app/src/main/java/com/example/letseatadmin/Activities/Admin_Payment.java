@@ -1,10 +1,16 @@
 package com.example.letseatadmin.Activities;
 
+import static com.example.letseatadmin.Activities.MainActivity.listener;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -32,6 +38,7 @@ public class Admin_Payment extends AppCompatActivity {
     TextView Admin_Payment_Total_Income,Admin_Payment_Total_Paid_Income,Admin_Payment_Total_Unpaid_Income;
     RetrofitServices retrofitServices;
     AdminApi adminApi;
+    ProgressDialog pg;
 
 
 
@@ -48,7 +55,18 @@ public class Admin_Payment extends AppCompatActivity {
         Admin_Payment_Total_Paid_Income = findViewById(R.id.Admin_Payment_Total_Paid_Income);
         retrofitServices = new RetrofitServices();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
+        pg = new ProgressDialog(this);
+        pg.setTitle("Loading..... ");
+        pg.setMessage("Please wait Deleting Order ....");
+        pg.setCanceledOnTouchOutside(false);
+        pg.show();
         setData();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pg.dismiss();
+            }
+        },500);
         adminApi.getAllPayment().enqueue(new Callback<List<Payment>>() {
             @Override
             public void onResponse(Call<List<Payment>> call, Response<List<Payment>> response) {
@@ -170,5 +188,16 @@ public class Admin_Payment extends AppCompatActivity {
             }
         });
 
+    }
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(listener,filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(listener);
+        super.onStop();
     }
 }

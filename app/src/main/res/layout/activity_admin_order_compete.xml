@@ -35,5 +35,15 @@
             </ScrollView>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        app:lottie_repeatMode="restart"
+        app:lottie_repeatCount="50"
+        android:layout_height="@dimen/_220sdp"
+        app:lottie_autoPlay="true"
+        android:layout_centerVertical="true"
+        app:lottie_rawRes="@raw/empty"
+        android:id="@+id/Admin_Complete_Lottie"
+        android:visibility="gone"
+        tools:ignore="MissingClass"/>
 </RelativeLayout>

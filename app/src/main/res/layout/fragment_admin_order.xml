@@ -10,17 +10,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Option"
-            android:textSize="@dimen/_30sdp"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/app"
-            android:textStyle="bold"/>
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Option"
+                android:textSize="@dimen/_30sdp"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/app"
+                android:padding="@dimen/_5sdp"
+                android:id="@+id/t1"
+                android:textStyle="bold"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/app"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_below="@id/t1" />
+        </LinearLayout>
+
 
         <LinearLayout
-            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_80sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/user_background"
@@ -37,6 +52,43 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/_10sdp"
                 android:gravity="center_horizontal">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    android:background="@color/app"
+                    android:backgroundTint="@color/app">
+                    <FrameLayout
+                        android:layout_width="@dimen/_130sdp"
+                        android:layout_height="@dimen/_140sdp"
+                        android:layout_gravity="fill_vertical"
+                        android:layout_marginBottom="@dimen/_5sdp">
+
+                        <ImageButton
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:id="@+id/Admin_Order_Orders"
+                            android:layout_width="@dimen/_110sdp"
+                            android:layout_height="@dimen/_100sdp"
+                            android:src="@drawable/baseline_pending_actions_24"
+                            android:background="@color/app"
+                            android:scaleType="fitXY">
+                        </ImageButton>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Orders"
+                            android:clickable="false"
+                            android:textAlignment="center"
+                            android:textColor="@color/button"
+                            android:layout_marginTop="@dimen/_115sdp"
+                            android:layout_gravity="center_horizontal"/>
+                    </FrameLayout>
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_1sdp"/>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -71,42 +123,8 @@
                             android:layout_gravity="center_horizontal"/>
                     </FrameLayout>
                 </androidx.cardview.widget.CardView>
-                <View
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_1sdp"/>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="@dimen/_20sdp"
-                    android:background="@color/app"
-                    android:backgroundTint="@color/app">
-                    <FrameLayout
-                        android:layout_width="@dimen/_130sdp"
-                        android:layout_height="@dimen/_140sdp"
-                        android:layout_gravity="fill_vertical"
-                        android:layout_marginBottom="@dimen/_5sdp">
 
-                        <ImageButton
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:id="@+id/Admin_Order_Orders"
-                            android:layout_width="@dimen/_110sdp"
-                            android:layout_height="@dimen/_100sdp"
-                            android:src="@drawable/baseline_pending_actions_24"
-                            android:background="@color/app"
-                            android:scaleType="fitXY">
-                        </ImageButton>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Orders"
-                            android:clickable="false"
-                            android:textAlignment="center"
-                            android:textColor="@color/button"
-                            android:layout_marginTop="@dimen/_115sdp"
-                            android:layout_gravity="center_horizontal"/>
-                    </FrameLayout>
-                </androidx.cardview.widget.CardView>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -114,45 +132,6 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/_10sdp"
                 android:gravity="center_horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="@dimen/_20sdp"
-                    android:background="@color/app"
-                    android:backgroundTint="@color/app">
-                    <FrameLayout
-                        android:layout_width="@dimen/_130sdp"
-                        android:layout_height="@dimen/_140sdp"
-                        android:layout_gravity="fill_vertical"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        >
-
-                        <ImageButton
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_gravity="center_horizontal"
-                            android:id="@+id/Admin_Order_All_Orders"
-                            android:layout_width="@dimen/_110sdp"
-                            android:layout_height="@dimen/_100sdp"
-                            android:src="@drawable/baseline_access_time_filled_24"
-                            android:background="@color/app"
-                            android:scaleType="fitXY">
-                        </ImageButton>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="All Order"
-                            android:clickable="false"
-                            android:textAlignment="center"
-                            android:textColor="@color/button"
-                            android:layout_marginTop="@dimen/_115sdp"
-                            android:layout_gravity="center_horizontal"/>
-                    </FrameLayout>
-                </androidx.cardview.widget.CardView>
-
-                <View
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_1sdp"/>
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -186,10 +165,45 @@
                             android:layout_gravity="center_horizontal"/>
                     </FrameLayout>
                 </androidx.cardview.widget.CardView>
+
+                <View
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_1sdp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    android:background="@color/app"
+                    android:backgroundTint="@color/app">
+                    <FrameLayout
+                        android:layout_width="@dimen/_130sdp"
+                        android:layout_height="@dimen/_140sdp"
+                        android:layout_gravity="fill_vertical"
+                        android:layout_marginBottom="@dimen/_5sdp">
+
+                        <ImageButton
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_gravity="center_horizontal"
+                            android:id="@+id/Admin_Order_All_Orders"
+                            android:layout_width="@dimen/_110sdp"
+                            android:layout_height="@dimen/_100sdp"
+                            android:src="@drawable/baseline_access_time_filled_24"
+                            android:background="@color/app"
+                            android:scaleType="fitXY">
+                        </ImageButton>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="All Order"
+                            android:clickable="false"
+                            android:textAlignment="center"
+                            android:textColor="@color/button"
+                            android:layout_marginTop="@dimen/_115sdp"
+                            android:layout_gravity="center_horizontal"/>
+                    </FrameLayout>
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
-
-
-
 </RelativeLayout>

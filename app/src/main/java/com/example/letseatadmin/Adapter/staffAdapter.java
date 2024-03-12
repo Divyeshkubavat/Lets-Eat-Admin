@@ -71,9 +71,9 @@ public class staffAdapter extends RecyclerView.Adapter<staffAdapter.MyViewHolder
 
                     }
                 });
-                list.remove(position);
-                notifyItemRemoved(position);
-                notifyDataSetChanged();
+                    list.remove(position);
+                    notifyItemRemoved(position);
+                    notifyDataSetChanged();
             }
         });
         holder.btncall.setOnClickListener(new View.OnClickListener() {

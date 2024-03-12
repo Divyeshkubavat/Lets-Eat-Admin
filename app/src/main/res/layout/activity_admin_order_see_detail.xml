@@ -71,12 +71,12 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="@dimen/_20sdp"
-                app:cardCornerRadius="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_5sdp">
+                app:cardElevation="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_3sdp"
+                android:layout_marginLeft="@dimen/_2sdp"
+                android:layout_marginRight="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_2sdp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
