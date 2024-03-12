@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_44sdp"
                 android:hint="Search here"
-                android:id="@+id/Admin_Burger_Searchbar"
+                android:id="@+id/Admin_Delivery_Searchbar"
                 android:layout_below="@id/Admin_Burger_Title"
                 app:iconifiedByDefault="false"
                 android:layout_marginLeft="@dimen/_12sdp"

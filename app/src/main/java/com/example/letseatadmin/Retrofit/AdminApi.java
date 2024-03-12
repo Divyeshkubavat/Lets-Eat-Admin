@@ -166,4 +166,14 @@ public interface AdminApi {
     Call<List<Order>> getOrderByDeliveryBoyId(
             @Query("deliveryId") int id
     );
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/staff/search")
+    Call<List<Staff>> searchStaff(
+            @Query("keyword") String s
+    );
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/delivery-boy/search")
+    Call<List<deliveryBoy>> searchDelivery(
+            @Query("keyword") String s
+    );
 }

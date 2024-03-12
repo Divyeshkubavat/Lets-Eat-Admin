@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +40,7 @@ public class AdminDelivery extends Fragment {
     ArrayList<deliveryBoy> deliveryBoysList;
     deliveryBoyAdapter deliveryAdapter;
     ProgressDialog pg;
+    SearchView Admin_Delivery_Searchbar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class AdminDelivery extends Fragment {
         View view = inflater.inflate(R.layout.fragment_admin_delivery, container, false);
         Admin_Delivery_Add_FloatButton = view.findViewById(R.id.Admin_Delivery_ADD_FloatButton);
         Admin_Delivery_Recyclerview=view.findViewById(R.id.Admin_Delivery_Recyclerview);
+        Admin_Delivery_Searchbar=view.findViewById(R.id.Admin_Delivery_Searchbar);
         retrofitServices = new RetrofitServices();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
         deliveryBoysList=new ArrayList<>();
@@ -67,6 +70,19 @@ public class AdminDelivery extends Fragment {
                 startActivity(new Intent(getContext(),Admin_delivery_Add_Edit.class));
             }
         });
+        Admin_Delivery_Searchbar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                search(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                search(newText);
+                return false;
+            }
+        });
         return view;
     }
     private  void setData(){
@@ -79,6 +95,23 @@ public class AdminDelivery extends Fragment {
                 deliveryAdapter.notifyDataSetChanged();
                 Admin_Delivery_Recyclerview.setAdapter(deliveryAdapter);
             }
+            @Override
+            public void onFailure(Call<List<deliveryBoy>> call, Throwable t) {
+
+            }
+        });
+    }
+    private void search(String s){
+        adminApi.searchDelivery(s).enqueue(new Callback<List<deliveryBoy>>() {
+            @Override
+            public void onResponse(Call<List<deliveryBoy>> call, Response<List<deliveryBoy>> response) {
+                deliveryBoysList= (ArrayList<deliveryBoy>) response.body();
+                deliveryAdapter = new deliveryBoyAdapter(deliveryBoysList,getContext());
+                Admin_Delivery_Recyclerview.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+                deliveryAdapter.notifyDataSetChanged();
+                Admin_Delivery_Recyclerview.setAdapter(deliveryAdapter);
+            }
+
             @Override
             public void onFailure(Call<List<deliveryBoy>> call, Throwable t) {
 

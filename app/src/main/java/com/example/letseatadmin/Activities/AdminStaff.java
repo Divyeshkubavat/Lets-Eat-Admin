@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +38,8 @@ public class AdminStaff extends Fragment {
 
     ProgressDialog pg;
 
+    SearchView Admin_Staff_Searchview;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class AdminStaff extends Fragment {
         View view = inflater.inflate(R.layout.fragment_admin_staff, container, false);
         Admin_Staff_Add_FloatButton = view.findViewById(R.id.Admin_Staff_ADD_FloatButton);
         Admin_Staff_Recyclerview=view.findViewById(R.id.Admin_Staff_Recyclerview);
+        Admin_Staff_Searchview=view.findViewById(R.id.Admin_Staff_Searchview);
         retrofitServices = new RetrofitServices();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
         staff = new ArrayList<>();
@@ -65,10 +69,40 @@ public class AdminStaff extends Fragment {
                 startActivity(new Intent(getContext(), Admin_Staff_Add.class));
             }
         });
+        Admin_Staff_Searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                search(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                search(newText);
+                return false;
+            }
+        });
     return view;
     }
     private void setData(){
         adminApi.getAllStaff().enqueue(new Callback<List<Staff>>() {
+            @Override
+            public void onResponse(Call<List<Staff>> call, Response<List<Staff>> response) {
+                staff = (ArrayList<Staff>) response.body();
+                staffAdapter adapter = new staffAdapter(staff,getContext());
+                Admin_Staff_Recyclerview.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+                adapter.notifyDataSetChanged();
+                Admin_Staff_Recyclerview.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Staff>> call, Throwable t) {
+
+            }
+        });
+    }
+    private void search(String s){
+        adminApi.searchStaff(s).enqueue(new Callback<List<Staff>>() {
             @Override
             public void onResponse(Call<List<Staff>> call, Response<List<Staff>> response) {
                 staff = (ArrayList<Staff>) response.body();
