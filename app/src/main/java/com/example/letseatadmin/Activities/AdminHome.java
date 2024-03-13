@@ -30,8 +30,8 @@ import retrofit2.Response;
 
 public class AdminHome extends Fragment {
 
-    ImageButton Admin_Home_Burger,Admin_Home_Pizza,Admin_Home_Combo,Admin_Home_drink;
-    Button Admin_Home_Offers;
+    ImageButton Admin_Home_Burger,Admin_Home_Pizza,Admin_Home_Combo,Admin_Home_drink,Admin_Home_Promo;
+    ImageButton Admin_Home_Offers;
     CircleImageView Admin_Home_Image;
     TextView Admin_Home_Name,Admin_Home_Greeting;
 
@@ -39,6 +39,8 @@ public class AdminHome extends Fragment {
     String Login_Uid;
     RetrofitServices retrofitServices;
     AdminApi adminApi;
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,6 +58,7 @@ public class AdminHome extends Fragment {
         Admin_Home_Greeting=view.findViewById(R.id.Admin_Home_Greeting);
         Admin_Home_Pizza=view.findViewById(R.id.Admin_Home_Pizza);
         Admin_Home_Offers=view.findViewById(R.id.Admin_Home_Offers);
+        Admin_Home_Promo=view.findViewById(R.id.Admin_Home_Promo);
         Admin_Home_Image=view.findViewById(R.id.Admin_Home_Image);
         retrofitServices = new RetrofitServices();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
@@ -115,6 +118,12 @@ public class AdminHome extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), Admin_Offer.class));
+            }
+        });
+        Admin_Home_Promo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(),Admin_Promo_Code.class));
             }
         });
         return view;

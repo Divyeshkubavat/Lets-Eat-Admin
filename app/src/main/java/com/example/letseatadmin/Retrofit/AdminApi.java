@@ -5,6 +5,7 @@ import com.example.letseatadmin.Models.Offer;
 import com.example.letseatadmin.Models.Order;
 import com.example.letseatadmin.Models.Payment;
 import com.example.letseatadmin.Models.Product;
+import com.example.letseatadmin.Models.PromoCode;
 import com.example.letseatadmin.Models.Staff;
 import com.example.letseatadmin.Models.adminLogin;
 import com.example.letseatadmin.Models.deliveryBoy;
@@ -176,4 +177,20 @@ public interface AdminApi {
     Call<List<deliveryBoy>> searchDelivery(
             @Query("keyword") String s
     );
+
+    @POST("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/discount-code/add")
+    Call<PromoCode> setCode(@Body PromoCode promoCode);
+
+    @DELETE("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/discount-code/delete")
+    Call<String> deleteCode(
+            @Query("discountCodeId") int id
+    );
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/orders/get-by-state-and-delivery-boy-id")
+    Call<List<Order>> getOrderByStateAndDeliveryBoyId(
+            @Query("state") int state,@Query("deliveryBoyId") int id
+    );
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/discount-code/get-all")
+    Call<List<PromoCode>> getAllCodes();
 }

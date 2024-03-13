@@ -82,21 +82,28 @@ public class Admin_Delivery_Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        adminApi.getOrderByDeliveryBoyId(id).enqueue(new Callback<List<Order>>() {
+        Admin_Delivery_Profile_History_Button_2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
-                list= (ArrayList<Order>) response.body();
-                adapter=new Delivery_History_Adapter(list,Admin_Delivery_Profile.this);
-                Admin_Delivery_History_recyclerview.setLayoutManager(new LinearLayoutManager(Admin_Delivery_Profile.this,LinearLayoutManager.VERTICAL,false));
-                adapter.notifyDataSetChanged();
-                Admin_Delivery_History_recyclerview.setAdapter(adapter);
-            }
+            public void onClick(View view) {
+                adminApi.getOrderByStateAndDeliveryBoyId(5,id).enqueue(new Callback<List<Order>>() {
+                    @Override
+                    public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
+                        list= (ArrayList<Order>) response.body();
+                        adapter=new Delivery_History_Adapter(list,Admin_Delivery_Profile.this);
+                        Admin_Delivery_History_recyclerview.setLayoutManager(new LinearLayoutManager(Admin_Delivery_Profile.this,LinearLayoutManager.VERTICAL,false));
+                        adapter.notifyDataSetChanged();
+                        Admin_Delivery_History_recyclerview.setAdapter(adapter);
+                    }
 
-            @Override
-            public void onFailure(Call<List<Order>> call, Throwable t) {
+                    @Override
+                    public void onFailure(Call<List<Order>> call, Throwable t) {
 
+                    }
+                });
             }
         });
+
+
     }
     private void setData(){
         Intent i = getIntent();
