@@ -21,7 +21,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Delivery_History_Adapter extends RecyclerView.Adapter<MyViewHolder>
+public class Delivery_History_Adapter extends RecyclerView.Adapter<Delivery_History_Adapter.MyViewHolder>
 {
     ArrayList<Order> list;
     Context context;
@@ -29,32 +29,31 @@ public class Delivery_History_Adapter extends RecyclerView.Adapter<MyViewHolder>
         this.list = list;
         this.context = context;
     }
-
-
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.activity_admin_delivery_history_design,parent,false));
+        return new Delivery_History_Adapter.MyViewHolder(LayoutInflater.from(context).inflate(R.layout.activity_admin_delivery_history_design,parent,false));
     }
-
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final Order o = list.get(position);
-        holder.Status.setText(o.getState());
         holder.Order_ID.setText(String.valueOf(o.getId()));
+        holder.Status.setText("Completed");
+
     }
     @Override
     public int getItemCount() {
         return list.size();
     }
-}
-class MyViewHolder extends RecyclerView.ViewHolder
-{
-    TextView Order_ID,Status;
-    public MyViewHolder(@NonNull View itemView) {
-        super(itemView);
-        Order_ID = itemView.findViewById(R.id.Admin_Delivery_History_OrderID);
-        Status = itemView.findViewById(R.id.Admin_Delivery_History_Status);
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView Order_ID, Status;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            Order_ID = itemView.findViewById(R.id.Admin_Delivery_History_OrderID);
+            Status = itemView.findViewById(R.id.Admin_Delivery_History_Status);
+        }
     }
 }
+
+
