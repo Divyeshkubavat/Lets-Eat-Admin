@@ -24,6 +24,8 @@
         android:theme="@style/Theme.LetsEatAdmin"
         android:usesCleartextTraffic="true"
         tools:targetApi="31" >
+        <activity android:name=".Activities.Forgot_Password"
+            android:exported="false"/>
         <activity
             android:name=".Activities.Admin_Promo_Code_Design"
             android:exported="false" />

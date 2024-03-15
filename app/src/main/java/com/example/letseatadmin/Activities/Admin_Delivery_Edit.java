@@ -12,6 +12,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -106,6 +107,9 @@ public class Admin_Delivery_Edit extends AppCompatActivity {
         if(Admin_Delivery_Email.length() == 0)
         {
             Admin_Delivery_Email.setError("*Required");
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(Admin_Delivery_Email.getText().toString()).matches()) {
+            Admin_Delivery_Email.setError("* Email Must Be in Email Format");
             return false;
         }
         if(Admin_Delivery_Mobile.length() == 0)

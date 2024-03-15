@@ -25,7 +25,7 @@ public interface AdminApi {
     @POST("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/admin/add")
     Call<Admin> save(@Body Admin admin);
 
-    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/admin/")
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/admin")
     Call<List<Admin>> getAllData();
 
     @POST("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/admin/login")
@@ -97,6 +97,16 @@ public interface AdminApi {
     @DELETE("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/staff/delete")
     Call<String> deleteStaff(
             @Query("staffId") int id
+    );
+
+    @PUT("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/admin/update-password-by-email")
+    Call<Admin> updatePasswordByEmail(
+            @Query("email") String mail ,@Query("password") String pass
+    );
+
+    @GET("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/admin/verify-email")
+    Call<String> verifyEmailForForgetPass(
+            @Query("email") String mail
     );
 
     @POST("http://letseat-env.eba-mvj8pngz.eu-north-1.elasticbeanstalk.com/lets-eat/delivery-boy/add")

@@ -35,7 +35,7 @@ public class Admin_Login extends AppCompatActivity {
 
     private ProgressDialog Admin_Login_Progressbar;
     LottieAnimationView Admin_Login_Animation;
-    TextView Admin_Login_Signup;
+    TextView Admin_Login_Signup,Forget_Password;
     boolean ischeck = false;
     RetrofitServices retrofitServices;
     AdminApi adminApi;
@@ -52,6 +52,7 @@ public class Admin_Login extends AppCompatActivity {
         Admin_Login_Password=findViewById(R.id.Admin_Login_Password);
         Admin_Login_Animation=findViewById(R.id.Admin_Login_Animation);
         Admin_Login_Signup=findViewById(R.id.Admin_Login_Signup);
+        Forget_Password=findViewById(R.id.fp);
         retrofitServices = new RetrofitServices();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
         Admin_Login_Animation.animate().translationX(0).setDuration(200000).setStartDelay(0);
@@ -83,6 +84,12 @@ public class Admin_Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),Admin_Registration.class));
+            }
+        });
+        Forget_Password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Forgot_Password.class));
             }
         });
 
