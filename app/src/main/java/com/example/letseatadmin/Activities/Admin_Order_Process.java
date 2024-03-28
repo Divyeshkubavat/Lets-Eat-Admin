@@ -38,7 +38,7 @@ public class Admin_Order_Process extends AppCompatActivity {
     ArrayList<Order> list;
     ProcessAdapter adapter;
     ProgressDialog pg;
-    LottieAnimationView Admin_Process_Lottie;
+    public static LottieAnimationView Admin_Process_Lottie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,5 +95,11 @@ public class Admin_Order_Process extends AppCompatActivity {
     protected void onStop() {
         unregisterReceiver(listener);
         super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        setData();
+        super.onResume();
     }
 }

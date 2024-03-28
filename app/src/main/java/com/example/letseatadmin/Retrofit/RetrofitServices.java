@@ -14,7 +14,7 @@ public class RetrofitServices {
     private void initializedRetrofit() {
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(AppConstants.api+"/lets-eat/")
+                .baseUrl(AppConstants.api+"/")
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();
     }

@@ -1,5 +1,7 @@
 package com.example.letseatadmin.Adapter;
 
+import static com.example.letseatadmin.Activities.Admin_Order_Process.Admin_Process_Lottie;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -79,7 +81,11 @@ public class ProcessAdapter extends RecyclerView.Adapter<ProcessAdapter.MyViewHo
                     public void onResponse(Call<Order> call, Response<Order> response) {
 
                         Toast.makeText(context, "Processed Successfully", Toast.LENGTH_SHORT).show();
-
+                        if(list.size()==0){
+                            Admin_Process_Lottie.setVisibility(View.VISIBLE);
+                        }else {
+                            Admin_Process_Lottie.setVisibility(View.GONE);
+                        }
                     }
 
                     @Override
@@ -98,6 +104,7 @@ public class ProcessAdapter extends RecyclerView.Adapter<ProcessAdapter.MyViewHo
                 },2000);
             }
         });
+
 
     }
 

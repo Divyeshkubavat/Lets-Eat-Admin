@@ -62,7 +62,7 @@ public class AdminStaff extends Fragment {
             public void run() {
                 pg.dismiss();
             }
-        },500);
+        },1500);
         Admin_Staff_Add_FloatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

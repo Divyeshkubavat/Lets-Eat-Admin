@@ -2,10 +2,13 @@ package com.example.letseatadmin.Activities;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +19,8 @@ import com.example.letseatadmin.Retrofit.AdminApi;
 import com.example.letseatadmin.Retrofit.RetrofitServices;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
@@ -42,6 +47,11 @@ public class Forgot_Password extends AppCompatActivity {
     RetrofitServices retrofitServices;
     AdminApi adminApi;
     ProgressDialog pg;
+    Date otpSendDate;
+    long otpSendDateMills;
+    TextView getOtpAgain;
+    LinearLayout getOtpAgainTemp;
+    int count=1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +68,8 @@ public class Forgot_Password extends AppCompatActivity {
         btn=findViewById(R.id.forgot_btn);
         btn2=findViewById(R.id.forgot_btn1);
         btn3=findViewById(R.id.forgot_btn2);
+        getOtpAgain=findViewById(R.id.getOtpAgain);
+        getOtpAgainTemp=findViewById(R.id.getOtpAgainTemp);
         retrofitServices = new RetrofitServices();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -65,8 +77,6 @@ public class Forgot_Password extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     getOTP();
-                    btn.setVisibility(View.GONE);
-                    btn2.setVisibility(View.VISIBLE);
                 } catch (MessagingException e) {
                     throw new RuntimeException(e);
                 }
@@ -76,8 +86,7 @@ public class Forgot_Password extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 verifyOTP();
-                btn2.setVisibility(View.GONE);
-                btn3.setVisibility(View.VISIBLE);
+
             }
         });
         btn3.setOnClickListener(new View.OnClickListener() {
@@ -87,15 +96,25 @@ public class Forgot_Password extends AppCompatActivity {
             }
         });
 
+        getOtpAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    getOTP();
+                } catch (MessagingException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
     }
     private void getOTP() throws MessagingException {
         String forgerOTP=otpEmail();
         if(email.getText().toString().length()==0){
             email.setError("* REQUIRED");
-        }else if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
             email.setError("Email Must Be In Email Format");
-        }
-        else {
+        } else {
             pg.show();
             adminApi.verifyEmailForForgetPass(email.getText().toString()).enqueue(new Callback<String>() {
                 @Override
@@ -116,10 +135,13 @@ public class Forgot_Password extends AppCompatActivity {
                                                 runOnUiThread(new Runnable() {
                                                     @Override
                                                     public void run() {
+                                                        otpSendDate=new Date();
+                                                        otpSendDateMills=isAfterFiveMinutes(otpSendDate);
                                                         pg.dismiss();
                                                         Toast.makeText(Forgot_Password.this, "OTP Send On Your Email", Toast.LENGTH_SHORT).show();
+                                                        btn.setVisibility(View.GONE);
+                                                        btn2.setVisibility(View.VISIBLE);
                                                         otp.setVisibility(View.VISIBLE);
-
                                                     }
                                                 });
                                                 //Toast.makeText(Forgot_Password.this, "OTP Sent On Your Email", Toast.LENGTH_SHORT).show();
@@ -134,35 +156,43 @@ public class Forgot_Password extends AppCompatActivity {
                                 t.start();
                             }
                         },3000);
-
                     }
                 }
-
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
 
                 }
             });
-
         }
-
     }
     private void verifyOTP(){
-
-        //btn.setText("Forget");
-        if(userOtp.equals(otp.getText().toString())){
+        otpExpiration();
+        if(otp.getText().toString().equals("")){
+            otp.setError("Fill The Field");
+        }
+        else if(userOtp.equals(otp.getText().toString())){
             pass.setVisibility(View.VISIBLE);
             confirm_pass.setVisibility(View.VISIBLE);
+            btn2.setVisibility(View.GONE);
+            btn3.setVisibility(View.VISIBLE);
+            getOtpAgainTemp.setVisibility(View.GONE);
         }else {
-            Toast.makeText(Forgot_Password.this, "Otp Invalid", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Forgot_Password.this, "Otp Invalid or Otp May Be Expire", Toast.LENGTH_SHORT).show();
         }
     }
     private void changePass(){
-        if(pass.getText().toString().equals(confirm_pass.getText().toString())){
+        if(pass.getText().toString().equals("") || confirm_pass.getText().toString().equals("")){
+            if(pass.getText().toString().equals("")){
+                pass.setError("* Required");
+            }
+            if(confirm_pass.getText().toString().equals("")){
+                confirm_pass.setError("* Required");
+            }
+        }else if(pass.getText().toString().equals(confirm_pass.getText().toString())){
             adminApi.updatePasswordByEmail(email.getText().toString(),pass.getText().toString()).enqueue(new Callback<Admin>() {
                 @Override
                 public void onResponse(Call<Admin> call, Response<Admin> response) {
-                    Toast.makeText(Forgot_Password.this, "Password Updated Successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Forgot_Password.this, "Password Change Successfully", Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
@@ -222,7 +252,7 @@ public class Forgot_Password extends AppCompatActivity {
                 "\n" +
                 "Your OTP is:"+generateOtp+"\n" +
                 "\n" +
-                "Please use this OTP to reset your password. Once entered, you will be prompted to create a new password for your account. Please ensure that you keep this OTP confidential and do not share it with anyone.\n" +
+                "Please use this OTP to reset your password And Note that it is valid for 2 minute Once entered, you will be prompted to create a new password for your account. Please ensure that you keep this OTP confidential and do not share it with anyone.\n" +
                 "\n" +
                 "If you did not request this password reset or have any concerns about the security of your account, please contact our support team immediately at letleatpdm2024@gmail.com or 7096011908.\n" +
                 "\n" +
@@ -237,7 +267,32 @@ public class Forgot_Password extends AppCompatActivity {
     private void otpGenaretor(){
         Random random = new Random();
         String o = String.format("%04d",random.nextInt(10000));
-        generateOtp=o;
+        generateOtp= o;
         userOtp=generateOtp;
+    }
+    public  long isAfterFiveMinutes(Date orderPlacementTime) {
+        Date temp = new Date();
+        long timeDifferenceInMillis =temp.getTime()-orderPlacementTime.getTime();
+        return timeDifferenceInMillis;
+    }
+    private void otpExpiration(){
+        otpSendDateMills=isAfterFiveMinutes(otpSendDate);
+        otpSendDateMills = 2 * 60 * 1000 - otpSendDateMills;
+        if (otpSendDateMills > 2*60*1000) {
+            Toast.makeText(this, "Otp Is Expire", Toast.LENGTH_SHORT).show();
+        } else {
+            new CountDownTimer(otpSendDateMills,count) {
+                @Override
+                public void onTick(long l) {
+                    NumberFormat numberFormat = new DecimalFormat("00");
+                    long min = (l / 60000) % 60;
+                    long sec = (l / 1000) % 60;
+                }
+                @Override
+                public void onFinish() {
+                    userOtp="";
+                }
+            }.start();
+        }
     }
 }
