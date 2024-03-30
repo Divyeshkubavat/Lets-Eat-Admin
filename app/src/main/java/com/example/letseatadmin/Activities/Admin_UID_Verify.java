@@ -53,7 +53,8 @@ public class Admin_UID_Verify extends AppCompatActivity {
         setContentView(R.layout.activity_admin_uid_verify);
         Admin_UID_Verify_Progressbar = new ProgressDialog(this);
         Admin_UID_Verify_Progressbar.setTitle("Loading..... ");
-        Admin_UID_Verify_Progressbar.setMessage("Login Your Account ... ");
+        Admin_UID_Verify_Progressbar.setMessage("Verify UID ... ");
+        Admin_UID_Verify_Progressbar.setIcon(R.drawable.logo);
         Admin_UID_Verify_Progressbar.setCanceledOnTouchOutside(false);
         Admin_Verify_ID = findViewById(R.id.Admin_Verify_UID);
         Admin_Verify_Animation = findViewById(R.id.Admin_Verify_Animation);

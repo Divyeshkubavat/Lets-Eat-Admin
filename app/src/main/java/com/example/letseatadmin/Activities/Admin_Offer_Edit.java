@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -46,12 +47,16 @@ public class Admin_Offer_Edit extends AppCompatActivity {
     public FirebaseStorage firebaseStorage;
     RetrofitServices retrofitServices;
     AdminApi adminApi;
+    ProgressDialog pg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_offer_edit);
-
+        pg=new ProgressDialog(this);
+        pg.setMessage("Please wait update your profile ...");
+        pg.setTitle("Update ...");
+        pg.setIcon(R.drawable.logo);
         Admin_Offer_Edit_Burger = findViewById(R.id.Admin_Offer_Edit_Burger_Radio);
         Admin_Offer_Edit_Combo=findViewById(R.id.Admin_Offer_Edit_Combo_Radio);
         Admin_Offer_Edit_Pizza=findViewById(R.id.Admin_Offer_Edit_Pizza_Radio);
@@ -142,6 +147,7 @@ public class Admin_Offer_Edit extends AppCompatActivity {
         isCheck=check();
         if(isCheck)
         {
+            pg.show();
             if(imageurl.equals(imageurl))
             {
                 Offer offer = new Offer();

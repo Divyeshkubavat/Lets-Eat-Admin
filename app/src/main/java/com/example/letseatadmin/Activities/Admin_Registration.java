@@ -51,6 +51,7 @@ public class Admin_Registration extends AppCompatActivity {
         Admin_Registration_Progressbar = new ProgressDialog(this);
         Admin_Registration_Progressbar.setTitle("Loading..... ");
         Admin_Registration_Progressbar.setMessage("UID will send to your email .... ");
+        Admin_Registration_Progressbar.setIcon(R.drawable.logo);
         Admin_Registration_Progressbar.setCanceledOnTouchOutside(false);
         Admin_registration_Animation = findViewById(R.id.Admin_Registration_Animation);
         Admin_Registration_Fullname = findViewById(R.id.Admin_Registration_Fullname);

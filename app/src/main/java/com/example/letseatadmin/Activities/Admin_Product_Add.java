@@ -148,6 +148,7 @@ public class Admin_Product_Add extends AppCompatActivity {
     {
         pg.setTitle("Loading..... ");
         pg.setMessage("Adding Product ... ");
+        pg.setIcon(R.drawable.logo);
         pg.setCanceledOnTouchOutside(false);
         pg.show();
         String name,des;

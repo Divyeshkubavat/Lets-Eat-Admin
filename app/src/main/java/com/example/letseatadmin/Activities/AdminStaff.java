@@ -54,6 +54,7 @@ public class AdminStaff extends Fragment {
         pg = new ProgressDialog(getContext());
         pg.setTitle("Loading..... ");
         pg.setMessage("Please wait Deleting Order ....");
+        pg.setIcon(R.drawable.logo);
         pg.setCanceledOnTouchOutside(false);
         pg.show();
         setData();

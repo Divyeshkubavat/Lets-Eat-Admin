@@ -5,6 +5,7 @@ import static com.example.letseatadmin.Activities.MainActivity.listener;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -38,9 +39,14 @@ public class Admin_Edit extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener SetDate;
     RetrofitServices retrofitServices;
     AdminApi adminApi;
+    ProgressDialog pg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        pg=new ProgressDialog(this);
+        pg.setMessage("Please wait update your profile ...");
+        pg.setTitle("Update ...");
+        pg.setIcon(R.drawable.logo);
         setContentView(R.layout.activity_admin_edit);
         Admin_Edit_Name=findViewById(R.id.Admin_Edit_Name);
         Admin_Edit_Email=findViewById(R.id.Admin_Edit_Email);
@@ -172,6 +178,7 @@ public class Admin_Edit extends AppCompatActivity {
     }
     private void updateAdmin()
     {
+        pg.show();
         SharedPreferences preferences = getSharedPreferences("Login",MODE_PRIVATE);
         String uid = preferences.getString("Login_UID","");
         String name,pass,mobile,email,date;

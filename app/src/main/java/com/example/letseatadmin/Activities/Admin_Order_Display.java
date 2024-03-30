@@ -53,6 +53,7 @@ public class Admin_Order_Display extends AppCompatActivity {
         pg = new ProgressDialog(Admin_Order_Display.this);
         pg.setTitle("Loading..... ");
         pg.setMessage("Please wait Fetching Order ....");
+        pg.setIcon(R.drawable.logo);
         pg.setCanceledOnTouchOutside(false);
         pg.show();
         setData();

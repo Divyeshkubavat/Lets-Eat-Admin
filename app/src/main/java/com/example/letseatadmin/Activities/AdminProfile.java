@@ -47,6 +47,7 @@ public class AdminProfile extends Fragment {
         pg = new ProgressDialog(getActivity());
         pg.setTitle("Loading..... ");
         pg.setMessage("Please wait we fetch your data... ");
+        pg.setIcon(R.drawable.logo);
         pg.setCanceledOnTouchOutside(false);
         retrofitServices = new RetrofitServices();
         adminApi = retrofitServices.getRetrofit().create(AdminApi.class);

@@ -131,6 +131,7 @@ public class Admin_delivery_Add_Edit extends AppCompatActivity {
     private void setDeliveryBoy(){
         pg.setTitle("Loading..... ");
         pg.setMessage("Adding Delivery Boy ... ");
+        pg.setIcon(R.drawable.logo);
         pg.setCanceledOnTouchOutside(false);
         pg.show();
         getData();

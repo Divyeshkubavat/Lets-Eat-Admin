@@ -54,6 +54,7 @@ public class Admin_Offer_Add extends AppCompatActivity {
         Admin_Offer_Progressbar = new ProgressDialog(this);
         Admin_Offer_Progressbar.setTitle("Loading..... ");
         Admin_Offer_Progressbar.setMessage("Image is Upload ... ");
+        Admin_Offer_Progressbar.setIcon(R.drawable.logo);
         Admin_Offer_Add_Image = findViewById(R.id.Admin_Offer_Add_Image);
         Admin_Offer_Add_Button =  findViewById(R.id.Admin_Offer_Add_Button);
         Admin_Offer_Add_Pizza = findViewById(R.id.Admin_Offer_Add_Pizza_Radio);

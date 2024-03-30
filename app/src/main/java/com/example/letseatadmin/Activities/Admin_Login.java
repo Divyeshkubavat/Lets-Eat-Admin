@@ -46,6 +46,7 @@ public class Admin_Login extends AppCompatActivity {
         Admin_Login_Progressbar = new ProgressDialog(this);
         Admin_Login_Progressbar.setTitle("Loading..... ");
         Admin_Login_Progressbar.setMessage("Login Your Account ... ");
+        Admin_Login_Progressbar.setIcon(R.drawable.logo);
         Admin_Login_Progressbar.setCanceledOnTouchOutside(false);
         Admin_Login_Button = findViewById(R.id.Admin_Login_Button);
         Admin_Login_UID=findViewById(R.id.Admin_Login_ID);

@@ -183,6 +183,7 @@ public class Admin_Peoduct_Edit extends AppCompatActivity {
     private void updateProduct(){
         pg.setTitle("Loading..... ");
         pg.setMessage("Update Product ... ");
+        pg.setIcon(R.drawable.logo);
         pg.setCanceledOnTouchOutside(false);
         pg.show();
         firebaseStorage = FirebaseStorage.getInstance();

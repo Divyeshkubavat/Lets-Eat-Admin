@@ -124,6 +124,7 @@ public class Admin_Staff_Add extends AppCompatActivity {
     private void addStaff(){
         pg.setTitle("Loading..... ");
         pg.setMessage("Adding Staff ... ");
+        pg.setIcon(R.drawable.logo);
         pg.setCanceledOnTouchOutside(false);
         pg.show();
         firebaseStorage = FirebaseStorage.getInstance();

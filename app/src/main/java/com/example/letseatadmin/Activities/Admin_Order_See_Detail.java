@@ -53,6 +53,7 @@ public class Admin_Order_See_Detail extends AppCompatActivity {
         pg = new ProgressDialog(this);
         pg.setTitle("Loading..... ");
         pg.setMessage("Please wait Deleting Order ....");
+        pg.setIcon(R.drawable.logo);
         pg.setCanceledOnTouchOutside(false);
         pg.show();
         setData();

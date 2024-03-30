@@ -141,6 +141,7 @@ public class Admin_Staff_Edit extends AppCompatActivity {
         isCheck=check();
         pg.setTitle("Loading..... ");
         pg.setMessage("Updating Staff ... ");
+        pg.setIcon(R.drawable.logo);
         pg.setCanceledOnTouchOutside(false);
         pg.show();
         firebaseStorage = FirebaseStorage.getInstance();

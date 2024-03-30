@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.container2,new AdminHome()).commit();
         pg.setTitle("Loading ......");
         pg.setMessage("Please Wait ....");
+        pg.setIcon(R.drawable.logo);
         pg.setCanceledOnTouchOutside(true);
         pg.show();
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
