@@ -128,18 +128,6 @@
                 <View
                     android:layout_width="@dimen/_1sdp"
                     android:layout_height="@dimen/_10sdp"/>
-                <ImageView
-                    android:id="@+id/Admin_Delivery_Delete"
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="@dimen/_25sdp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/_24sdp"
-                    android:background="@drawable/image_border"
-                    android:padding="@dimen/_3sdp"
-                    android:src="@drawable/baseline_delete_24" />
-
-
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

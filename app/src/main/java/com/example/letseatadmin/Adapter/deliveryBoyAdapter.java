@@ -59,25 +59,6 @@ public class deliveryBoyAdapter extends RecyclerView.Adapter<deliveryBoyAdapter.
         holder.salary.setText(salary);
         holder.email.setText(boy.getEmail());
         Glide.with(context).load(boy.getImageUrl()).into(holder.image);
-        holder.btndelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                adminApi.deleteDeliveryBoy(boy.getId()).enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
-                        Toast.makeText(context, "Delete Successfully", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<String> call, Throwable t) {
-
-                    }
-                });
-                list.remove(position);
-                notifyItemRemoved(position);
-                notifyDataSetChanged();
-            }
-        });
         holder.btnphone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,7 +101,6 @@ public class deliveryBoyAdapter extends RecyclerView.Adapter<deliveryBoyAdapter.
             email=itemView.findViewById(R.id.Admin_Delivery_Email);
             salary=itemView.findViewById(R.id.Admin_Delivery_Salary);
             btnphone=itemView.findViewById(R.id.Admin_Delivery_Mobile_call);
-            btndelete=itemView.findViewById(R.id.Admin_Delivery_Delete);
         }
     }
 }
